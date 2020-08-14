@@ -1,0 +1,22 @@
+{
+  "name": "next-travel",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "static": "next build && next export",
+    "serve": "concurrently \"npm run dev\" \"npm run mock\"",
+    "mock": "json-server --watch db.json -p 4200 -d 450"
+  },
+  "dependencies": {
+    "concurrently": "^5.2.0",
+    "next": "9.4.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "sass": "^1.26.10"
+  }
+}

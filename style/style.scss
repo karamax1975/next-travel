@@ -1,0 +1,95 @@
+// @import '../components/header/header.scss';
+
+$white: #ffffff;
+$red: #ff2a00;
+$gray2:#4F4F4F;
+$gray5:#E0E0E0;
+$gray6: #F2F2F2;
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+
+
+input{
+  border: none;
+}
+input::placeholder{
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.wiget_findTout {
+  display: flex;
+  .input {
+    height: 32px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $white;
+    border-bottom: solid 2px $red;
+    span{
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: -2px;
+      margin-left: 16px;
+      cursor: pointer;
+    }
+    input{
+      padding: 0 16px;
+    }
+    input::placeholder{
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .input_icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        stroke: $red;
+        stroke-width: 2px;
+      }
+    }
+  }
+  .mock-input{
+    border-bottom: solid 2px $gray5;
+  }
+  .input-wrapper {
+    position: relative;
+    flex: 1;
+    margin: 0 3px;
+
+    .list-dropDown{
+      position: absolute;
+      overflow-y: scroll;
+      height: 120px;
+      width: 100%;
+      background: $white;
+      :hover{
+        background: $gray6;
+        cursor: pointer;
+      }
+      .dropDown-item{
+        height: 30px;
+        display: flex;
+        align-items: center;
+        padding-left: 15px;
+        font-size: 16px;
+        font-weight: 400;
+        color: $gray2;
+      }
+      .dropDown-item.selected{
+        color:red;
+      }
+    }
+
+
+  }
+  
+}

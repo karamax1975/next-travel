@@ -1,0 +1,48 @@
+{
+  "tours": [
+    {
+      "id": 1,
+      "country": "Франция",
+      "town": "Париж",
+      "type":"Экскурсионные туры",
+      "price": "72000",
+      "duration": "14",
+      "number": "на двоих",
+      "description": "",
+      "imgUrl": "/upload/Paris.jpg"
+    },
+    {
+      "id": 2,
+      "country": "Крит",
+      "town": "Ираклион",
+      "type":"Пляжный отдых",
+      "price": "33000",
+      "duration": "14",
+      "number": "1",
+      "description": "",
+      "imgUrl": "/upload/Crit.jpg"
+    },
+    {
+      "id": 3,
+      "country": "Чехия",
+      "town": "Прага",
+      "type":"Автобусные туры",
+      "price": "42000",
+      "duration": "7",
+      "number": "2",
+      "description": "",
+      "imgUrl": "/upload/Praga.jpg"
+    },
+    {
+      "id": 4,
+      "country": "Япония",
+      "town": "Хикоти",
+      "type":"Горнолыжные туры",
+      "price": "122000",
+      "duration": "7",
+      "number": "2",
+      "description": "",
+      "imgUrl": "/upload/Hikoti.jpg"
+    }
+  ]
+}
