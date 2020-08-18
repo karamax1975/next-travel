@@ -1,43 +1,73 @@
 import React, { useState } from "react";
-import InputCountry from "./input_country";
 import Input from "./input_typeTour";
+import Calendar from "./input_calendar";
 
 function WigetFindTours() {
-  // выбор типа тура
-  const [typePanel, setTypePanel] = useState('Тип тура')
-  const [tour, setTour] = useState('');
-  // выбор страны
-  const [countryPanel, setCountryPanel]=useState('Выберите страну');
-  const [country, setCountry]=useState('');
+  const [storeCountry, setStoreCountry] = useState({
+    country: {
+      select: "",
+      textPlaceholder: "Выберите страну",
+    },
+  });
 
-  function getUserSelectCountry(value){ // получаю выбор страны
-    setCountryPanel(value);
-    if(value==countryPanel) {setCountry('')}
-    else setCountry(value);
-    console.log(value)
+  const [storeType, setStoreType] = useState({
+    type: {
+      select: "",
+      textPlaceholder: "Тип тура",
+    },
+  });
+
+  
+
+  function getUserSelectCountry(value) {
+    // получаю выбор страны
+
+    if (value == storeCountry.country.textPlaceholder) {
+      setStoreCountry({
+        country: {
+          select: "",
+          textPlaceholder: value,
+        },
+      });
+    } else
+      setStoreCountry({
+        country: {
+          select: value,
+          textPlaceholder: value,
+        },
+      });
   }
 
-  function getUserSelectTypeTour(value) { // получаю выбор типа тура
-    setTypePanel(value);
-    if(value==typePanel) { 
-      setTour('') // если выбор юзера не совпадает с данными из списка 
-    }
-    else setTour(value); // юзер выбрал из списка
-    console.log(value)
+  function getUserSelectTypeTour(value) {
+    if (value == storeCountry.country.textPlaceholder) {
+      setStoreType({
+        type: {
+          select: "",
+          textPlaceholder: value,
+        },
+      });
+    } else
+      setStoreType({
+        type: {
+          select: value,
+          textPlaceholder: value,
+        },
+      });
   }
 
-  // console.log(typeTour)  //-------------------
   return (
     <div className="wiget_findTout">
-      <Input getUserSelect={getUserSelectCountry}
-      type={"country"}
-      name={countryPanel}
+      <Input
+        getUserSelect={getUserSelectCountry}
+        type={"country"}
+        name={storeCountry.country.textPlaceholder}
       />
       <Input
         getUserSelect={getUserSelectTypeTour}
         type={"type"}
-        name={typePanel}
+        name={storeType.type.textPlaceholder}
       />
+      {/* <Calendar name={datePanel} /> */}
     </div>
   );
 }

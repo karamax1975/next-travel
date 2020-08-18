@@ -91,5 +91,65 @@ input::placeholder{
 
 
   }
-  
+  .list-dropDown.no-scroll{
+    overflow: hidden;
+  }
+
+  .calendar{
+    padding: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.1);
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    .calendar_title{
+      text-align: center;
+    }
+    .calendar_nav{
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      top: -15px;
+      .calendar_nav_prev, .calendar_nav_next{
+        width: 58px;
+        height: 20px;
+        svg{
+          fill:$red
+        }
+        // background: red;
+      }
+      .calendar_nav_prev.stop{
+        svg{
+          fill: $gray5;
+        }
+      }
+    }
+    .calendar_week{
+      display: flex;
+      justify-content: space-between;
+      span{
+        width: calc(100% / 7);
+        height: 30px;
+        font-size: 12px;
+        color: $gray2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .calendar_content{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      :hover{
+        background: $gray6;
+      }
+      span{
+        width: calc(100% / 7);
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
 }
