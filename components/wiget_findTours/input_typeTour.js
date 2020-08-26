@@ -1,5 +1,4 @@
 import React from "react";
-import getArrayParameter from "../../inc/getArrayParameter";
 
 export default class InputTypeTour extends React.Component {
   state = {
@@ -7,15 +6,16 @@ export default class InputTypeTour extends React.Component {
     dropDown:false, // выпадающий список on/of
     value:'', // значение инпута
     find:'',
+    selectItem:''
   };
   elemRef = React.createRef();
 
+  
+
   componentDidMount() {
-    getArrayParameter(this.props.type).then((data) => {
-      this.setState({
-        arrayType: data,
-      });
-    });
+    fetch(`http://localhost:4200/${this.props.type}`)
+    .then(response=>response.json())
+    .then(json=>this.setState({arrayType:json}))
     document.body.addEventListener('click',(e)=> this.onClickOutside(e))
   }
 
@@ -31,8 +31,8 @@ export default class InputTypeTour extends React.Component {
   filterArray=(arr, value)=>{
     const residue = [];
     const find = [];
-    arr.forEach((item, index) =>{ 
-      if (item.toLowerCase().indexOf(value.toLowerCase()) === 0){
+    arr.forEach(item =>{ 
+      if (item[this.props.type].toLowerCase().indexOf(value.toLowerCase()) === 0){
         find.push(item);
       }
       else {
@@ -53,10 +53,9 @@ export default class InputTypeTour extends React.Component {
   }
   getDataInput=(e)=>{ /// подтверждение выбора в инпуте
     e.preventDefault();
-
     /// если не найдено соответствующего вводу - выводится пустое значение
     if(this.state.find){
-      this.props.getUserSelect(this.state.find);
+      this.props.getUserSelect(this.state.find[this.props.type]);
     }
     else{
       this.props.getUserSelect(this.props.name);
@@ -65,7 +64,8 @@ export default class InputTypeTour extends React.Component {
   }
 
   UserSelect=(select)=>{ /// передает наверх выбор юзера
-    this.props.getUserSelect(select);
+    this.props.getUserSelect(select[this.props.type]);
+    this.setState({selectItem:select})
     this.dropDown();
     
   }
@@ -74,14 +74,15 @@ export default class InputTypeTour extends React.Component {
     
 
     // формирую список
- 
-    const dropDownItem = this.state.arrayType.map((item, index) => {
+    const selectedClass =this.state.selectItem?'input selected':'input';  
+
+    const dropDownItem = this.state.arrayType.map(item => {
       return (
         <div
           className='dropDown-item'
-          key={index}
+          key={item.id}
           onClick={() => this.UserSelect(item)}
-          >{item}
+          >{item[this.props.type]}
         </div>
       );
     });
@@ -89,7 +90,7 @@ export default class InputTypeTour extends React.Component {
     if (!this.state.dropDown) {
       return (
         <div className="input-wrapper">
-          <div className="input" 
+          <div className={selectedClass} 
             onClick={this.dropDown}
           >
             <span>{this.props.name}</span>
@@ -107,7 +108,7 @@ export default class InputTypeTour extends React.Component {
       return (
         <div className="input-wrapper" ref={this.elemRef}>
           <form className="input" onSubmit={(e)=>this.getDataInput(e)}>
-            <input type="text" placeholder="Тип тура" autoFocus 
+            <input type="text" placeholder={this.props.name} autoFocus 
               onChange={(e)=>this.dataInput(e)}
             />
             <div className="input_icon" onClick={this.dropDown}>

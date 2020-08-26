@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import getDate from "./date";
 
-export default function calendar({ name }) {
+export default function calendar({ name, getUserSelect }) {
   const [onDropDown, setOnDropDown] = useState(false);
   const [year, setYear] = useState(new Date().getFullYear());
   const [mount, setMount] = useState(new Date().getMonth());
   const [navClass, setNavClass] = useState("calendar_nav_prev stop");
+  const [selected, setSelected]=useState(false);
   let arrMount = getDate(year, mount);
 
   function onOff() {
@@ -18,15 +19,19 @@ export default function calendar({ name }) {
 
   const dropPanelRef = React.createRef();
 
+  const externalClick=(e)=>{
+    if (
+      dropPanelRef.current !== null &&
+      !dropPanelRef.current.contains(e.target)
+    )
+      dropDown();
+  }
+
   useEffect(() => {
-    document.body.addEventListener("click", (e) => {
-      // если клик не в DropPanel - то она закрывается
-      if (
-        dropPanelRef.current !== null &&
-        !dropPanelRef.current.contains(e.target)
-      )
-        dropDown();
-    });
+    document.body.addEventListener("click", externalClick);
+    return ()=>{
+      document.body.removeEventListener('click', externalClick)
+    }
   });
 
   function prevMount() {
@@ -58,15 +63,24 @@ export default function calendar({ name }) {
       setYear(year + 1);
     }
   }
-
+  const key=Object.keys(arrMount.days);
   const arrDay = arrMount.days.map((item, index) => {
-    return <span key={index}>{item.slice(0,2)}</span>;
+    const itemClassName = +item.slice(3, 5) - 1 !== mount?'day gray':'day';
+    return <span key={key[index]} className={itemClassName} data-value={item}>{item.slice(0,2)}</span>;
   });
 
+
+  const userSelectedDay=(e)=>{
+    getUserSelect(e);
+    setSelected(true);
+  }
+
   if (!onDropDown) {
+
+    const selectedClass =selected?'input selected':'input';
     return (
       <div className="input-wrapper">
-        <div className="input" onClick={onOff}>
+        <div className={selectedClass} onClick={onOff}>
           <span>{name}</span>
           <div className="input_icon">
             <svg width="9" height="6" viewBox="0 0 9 6" fill="none">
@@ -88,7 +102,7 @@ export default function calendar({ name }) {
           </div>
         </div>
 
-        <div className="calendar">
+        <div className="calendar" onClick={(e)=> userSelectedDay(e)}>
           <div className="calendar_title">
             <span>
               {arrMount.mount} {arrMount.year}

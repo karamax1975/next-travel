@@ -1,7 +1,7 @@
 // @import '../components/header/header.scss';
 
 $white: #ffffff;
-$red: #ff2a00;
+$red: #E42B27;
 $gray2:#4F4F4F;
 $gray5:#E0E0E0;
 $gray6: #F2F2F2;
@@ -21,25 +21,80 @@ input::placeholder{
   font-family: "Source Sans Pro", sans-serif;
 }
 
-.wiget_findTout {
+.wiget_findTour {
   display: flex;
+  height: 160px;
+  background: silver;
+  .wrapper{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0 30px 0 30px;
+    .findTour_filtrs{
+      height: 50%;
+      display: flex;
+      align-items: center;
+
+      h4{
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 100%;
+        color:$red;
+        margin-right: 50px;
+      }
+      .filtrs-list{
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 100%;
+        .filtrs-list_item{
+          margin-right: 15px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px 20px;
+          border: solid 1px $gray5;
+          border-radius: 20px;
+        }
+        :last-child{
+          margin-right: 0;
+        }
+      }
+
+      display: flex;
+      .filtrs-list{
+        display: flex;
+    }
+  }
+  }
+
+  .findTour_inputs{
+    display: flex;
+    justify-content: space-between;
+    flex: 1 0 0;
+    height: 50%;
+    align-items: center;
+    // width: 100%;
+  }
+
   .input {
     height: 32px;
-    flex: 1;
     display: flex;
+    flex: 0 0 1;
     align-items: center;
     justify-content: space-between;
     background: $white;
-    border-bottom: solid 2px $red;
+    border-bottom: solid 2px $gray5;
     span{
       font-size: 16px;
       font-weight: 600;
       margin-top: -2px;
-      margin-left: 16px;
+      margin-left: 15px;
       cursor: pointer;
     }
     input{
-      padding: 0 16px;
+      padding: 0 15px;
+      width: calc(100% - 30px);
     }
     input::placeholder{
       font-size: 16px;
@@ -57,8 +112,11 @@ input::placeholder{
       }
     }
   }
-  .mock-input{
-    border-bottom: solid 2px $gray5;
+  .input.selected{
+    border-bottom: solid 2px $red;
+  }
+  .input-wrapper:first-child{
+    margin-left: 0;
   }
   .input-wrapper {
     position: relative;
@@ -71,6 +129,7 @@ input::placeholder{
       height: 120px;
       width: 100%;
       background: $white;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       :hover{
         background: $gray6;
         cursor: pointer;
@@ -98,9 +157,10 @@ input::placeholder{
   .calendar{
     padding: 15px;
     box-shadow: 0 4px 20px rgba(0,0,0,.1);
-    position: relative;
+    position: absolute;
     cursor: pointer;
     user-select: none;
+    background: $white;
     .calendar_title{
       text-align: center;
     }
@@ -110,10 +170,11 @@ input::placeholder{
       position: relative;
       top: -15px;
       .calendar_nav_prev, .calendar_nav_next{
-        width: 58px;
+        width: 40px;
         height: 20px;
         svg{
-          fill:$red
+          fill:$red;
+          width: 100%;
         }
         // background: red;
       }
@@ -150,6 +211,74 @@ input::placeholder{
         align-items: center;
         justify-content: center;
       }
+      .day{
+        color: $gray2;
+      }
+      .day.gray{
+        color: $gray5;
+      }
     }
   }
+  .wiget_findTout_submit{
+    width: 160px;
+    height: 100%;
+    border-radius: 0px 2px 2px 0px;
+    background: $red;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    span{
+      font-size: 14px;
+      color: $white;
+      margin-top: 4px;
+    }
+  }
+  .select-tourist{
+    position: absolute;
+    width: calc(100% - 30px);
+    padding: 15px;
+    background: $white;
+    box-shadow: 0 4px 20px rgba(0,0,0,.1);
+    cursor: pointer;
+    -webkit-user-select: none;
+  }
+  .tourist{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    .tourist_title{
+      flex: 1;
+    }
+    .tourist_button{
+      width: 24px;
+      height: 24px;
+      border-radius: 2px;
+      border: solid 1px $gray5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $red;
+
+    }
+    .tourist_number{
+      width: 30px;
+      align-items: center;
+      text-align: center;
+    }
+    .tourist_button:hover{
+      background: $gray6;
+    }
+
+  }
+  .tourist:last-child{
+    margin-bottom: 0;
+  }
+}
+
+.tour-list{
+  display: flex;
 }
