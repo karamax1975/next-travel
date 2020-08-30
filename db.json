@@ -9,7 +9,9 @@
       "duration": "14",
       "number": "на двоих",
       "description": "",
-      "imgUrl": "/upload/Paris.jpg"
+      "imgUrl": "/upload/Paris.jpg",
+      "start":"2020-01-01",
+      "end":"2021-01-01"
     },
     {
       "id": 2,
@@ -20,7 +22,9 @@
       "duration": "14",
       "number": "1",
       "description": "",
-      "imgUrl": "/upload/Crit.jpg"
+      "imgUrl": "/upload/Crit.jpg",
+      "start":"2020-10-01",
+      "end":"2021-01-01"
     },
     {
       "id": 3,
@@ -31,7 +35,9 @@
       "duration": "7",
       "number": "2",
       "description": "",
-      "imgUrl": "/upload/Praga.jpg"
+      "imgUrl": "/upload/Praga.jpg",
+      "start":"2020-10-01",
+      "end":"2021-01-01"
     },
     {
       "id": 4,
@@ -42,7 +48,22 @@
       "duration": "7",
       "number": "2",
       "description": "",
-      "imgUrl": "/upload/Hikoti.jpg"
+      "imgUrl": "/upload/Hikoti.jpg",
+      "start":"2020-02-01",
+      "end":"2021-01-01"
+    },
+    {
+      "id": 5,
+      "country": "Япония",
+      "town": "Хикоти",
+      "type":"Горнолыжные туры",
+      "price": "122000",
+      "duration": "7",
+      "number": "2",
+      "description": "",
+      "imgUrl": "/upload/Hikoti.jpg",
+      "start":"2020-02-01",
+      "end":"2021-01-01"
     }
   ],
   "type":[

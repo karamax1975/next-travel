@@ -13,7 +13,8 @@ export default class InputTypeTour extends React.Component {
   
 
   componentDidMount() {
-    fetch(`http://localhost:4200/${this.props.type}`)
+    // console.log(this.props.type);
+    fetch(`http://localhost:3000/api/${this.props.type}`)
     .then(response=>response.json())
     .then(json=>this.setState({arrayType:json}))
     document.body.addEventListener('click',(e)=> this.onClickOutside(e))
@@ -75,7 +76,6 @@ export default class InputTypeTour extends React.Component {
 
     // формирую список
     const selectedClass =this.state.selectItem?'input selected':'input';  
-
     const dropDownItem = this.state.arrayType.map(item => {
       return (
         <div
@@ -125,3 +125,11 @@ export default class InputTypeTour extends React.Component {
     }
   }
 }
+
+// InputTypeTour.getInitialProps = async () => {
+//   const response = await fetch(`http://localhost:3000/api/${this.props.type}`); // 3000/api/tours   //4200
+//   const list = await response.json();
+//   return {
+//     type:list,
+//   };
+// };
