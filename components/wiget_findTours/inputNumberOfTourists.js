@@ -122,7 +122,7 @@ export default function inputNumberOfTourists({ name, getUserSelect }) {
                         </div>
                     </div>
                     <div className="tourist">
-                    <span className="tourist_title">Дети</span>
+                    <span className="tourist_title">Дети до 6 лет</span>
                         <div className="tourist_button" 
                             onClick={increaseChild}>–
                         </div>

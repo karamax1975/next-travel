@@ -18,3 +18,13 @@ export const SET_DATE=(payload)=>{
         type:'SET_DATE', payload:payload
     }
 }
+export const SET_ADULTS=(payload)=>{
+    return{
+        type:'SET_ADULTS', payload:payload
+    }
+}
+export const SET_CHILD=(payload)=>{
+    return{
+        type:'SET_CHILD', payload:payload
+    }
+}

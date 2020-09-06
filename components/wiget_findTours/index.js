@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 
-import {SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE} from '../../reducers/actions/action_wigetSearcTour'
+import {SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD} from '../../reducers/actions/action_wigetSearcTour'
 import Input from "./input_typeTour";
 import Calendar from "./input_calendar";
 import InputNumberOfTourists from './inputNumberOfTourists';
@@ -36,18 +36,11 @@ export default function WigetFindTours() {
   const [touristPlaseholder, setTouristPlaseholder] = useState(`${tourists.adults} взрослых, без детей`);
 
   const [redirect, setRedirect] = useState(false);
-
   function Search() {
-    if(country.select && 
-          type.select &&
-          date.select &&
-          tourists.adults
-          ){ 
-
-      dispatch(SET_SEARCH(true))      
-      setRedirect(true);
-      
-    }
+    dispatch(SET_SEARCH(true))
+    dispatch(SET_ADULTS(tourists.adults))
+    dispatch(SET_CHILD(tourists.child))     
+    setRedirect(true);
   }
 
 
@@ -78,37 +71,41 @@ export default function WigetFindTours() {
     // получаю выбор страны
     setCountry(() => {
       if (value == country.textPlaceholder) {
+        dispatch(SET_COUNTRY(''))
         return {
           select: '',
           textPlaceholder: value
         }
       } else {
+        dispatch(SET_COUNTRY(value))
         return {
           select: value,
           textPlaceholder: value
         }
       }
     })
-    dispatch(SET_COUNTRY(value))
+
     
   }
 
   function getUserSelectTypeTour(value) {
     // Получаю тип тура
     setType(() => {
-      if (value == country.textPlaceholder) {
+      if (value == type.textPlaceholder) {
+        dispatch(SET_TYPE(''))
         return {
           select: '',
           textPlaceholder: value,
         }
       } else {
+        dispatch(SET_TYPE(value))
         return {
           select: value,
           textPlaceholder: value
         }
       }
     })
-    dispatch(SET_TYPE(value))
+    
   }
 
 

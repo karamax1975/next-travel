@@ -24,7 +24,7 @@ export default function Tours({ tours }) {
 }
 
 Tours.getInitialProps = async () => {
-  const response = await fetch("http://localhost:4200/tours");
+  const response = await fetch("http://localhost:3000/api/tours");
   const tours = await response.json();
   return {
     tours,

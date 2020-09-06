@@ -9,10 +9,10 @@ export default function Tour({ tour }) {
   );
 }
 
-Tour.getInitialProps = async (ctx) => {
-  const response = await fetch(`http://localhost:4200/tours/${ctx.query.id}`);
-  const tour = await response.json();
+Tour.getInitialProps = async (context) => {
+  const res = await fetch(`http://localhost:3000/api/tours`);
+  const tour = await res.json();
   return {
-    tour,
-  };
-};
+    tour:tour[context.query.id-1]
+  }
+}
