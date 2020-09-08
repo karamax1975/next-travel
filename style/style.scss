@@ -3,6 +3,7 @@
 $white: #ffffff;
 $red: #E42B27;
 $gray2:#4F4F4F;
+$gray4:#BDBDBD;
 $gray5:#E0E0E0;
 $gray6: #F2F2F2;
 
@@ -301,38 +302,59 @@ input::placeholder{
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     // margin-bottom: 30px;
     .img_wrapper{
-      height: 100px;
+      height: 150px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
 
       img{
-        max-width: 100%;
+        height: 100%;
         transition: 1s;
       }
     }
     .card-description{
       padding: 15px;
-      padding-bottom: 22px;
-      p{
+      padding-bottom: 13px;
+      h5{
         font-weight: 400;
         font-size: 18px;
         line-height: 100%;
         color: $gray2;
-        margin-bottom: 5px;
+        margin-bottom: 16px;      
       }
       span{
         font-weight: 300;
         font-size: 14px;
         line-height: 100%;
         color: $gray2;
+        display: block;
+        margin: 5px 0;
       }
       .card-description__down{
         margin-top: 22px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         p{
           color: $red;
         }
+        .liked{
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          svg{
+            fill: $gray5;
+          }
+        }
+        .liked.active{
+          svg{
+            fill:$red;
+          }
+        }
+
       }
     }
   }
@@ -346,14 +368,31 @@ input::placeholder{
 // Rezult search
 .rezult-select{
   display: flex;
-  align-items: center;
   padding: 15px;
   margin-bottom: 30px;
-  border: solid 1px $gray5;
+  align-items: center;
+  border: solid 1px $gray6;
   p{
     margin-right: 15px;
+    font-size: 16px;
+    font-weight: 400;
+    color: $gray2;
+    border-right: solid 1px $gray5;
+    padding-right: 16px;
   }
   p:last-child{
     margin-right: 0;
+    border-right: none;
+  }
+  h6{
+    font-size: 16px;
+    font-weight: 600;
+    color: $red;
+    margin-right: 16px;
+  }
+  span{
+    margin-left: 5px;
+    color: $gray2;
+    font-weight: 400;
   }
 }

@@ -1,5 +1,5 @@
 import Router from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import { useSelector } from 'react-redux';
 
 
@@ -23,7 +23,29 @@ export default function Result({ list }) {
     setLoader(false);
   }, [])
 
-  const stringAdult = adultTourists<2?'взрослый':'взрослых'
+  const stringAdult = adultTourists < 2 ? 'взрослый' : 'взрослых';
+  let stringChild = childTourists ?? 'без детей'
+  switch (childTourists) {
+    case 1: {
+      stringChild = 'ребенок'
+      break
+    }
+    case 2:
+    case 3:
+    case 4: {
+      stringChild = 'ребенка'
+      break
+    }
+    case 5:
+    case 6: {
+      stringChild = 'детей'
+      break
+    }
+    default: {
+      stringChild = 'без детей'
+      break
+    }
+  }
 
 
   return (
@@ -35,22 +57,22 @@ export default function Result({ list }) {
             filters
         </div>
           <div className="col-lg-9">
-            <h1>Ваш выбор:</h1>
             <div className="rezult-select">
-              <p>{typeCountry == '' ? 'Страна: все страны' : `Страна: ${typeCountry}`}</p>
-              <p>{typeType == '' ? 'Тип тура: все туры' : `Тип тура: ${typeType}`}</p>
-              <p>{typeDate == '' ? 'Дата тура: открытая дата' : `Дата тура: ${typeDate}`}</p>
-              <p>Туристы: {adultTourists} {stringAdult}, {childTourists>0?`${childTourists} ребенок`:'без детей'}</p>
+              <h6>Ваш выбор:</h6>
+              <p>страна: <span>{typeCountry == '' ? 'все страны' : typeCountry}</span></p>
+              <p>тип тура: <span>{typeType == '' ? 'все туры' : typeType}</span></p>
+              <p>дата тура: <span>{typeDate == '' ? 'открытая дата' : typeDate}</span></p>
+              <p>туристы: <span>{adultTourists} {stringAdult}, {childTourists > 0 ? `${childTourists} ${stringChild}` : stringChild}</span></p>
             </div>
-            {loader ? <Loader /> :
-              <ToursList
-                adults={adultTourists}
-                child={childTourists}
-                tours={arrTours}
-                filter1={typeCountry}
-                filter2={typeType}
-                date={typeDate}
-              />}
+              {loader ? <Loader /> :
+                <ToursList 
+                  adults={adultTourists}
+                  child={childTourists}
+                  tours={arrTours}
+                  filter1={typeCountry}
+                  filter2={typeType}
+                  date={typeDate}
+                />}
           </div>
         </div>
       </div>
@@ -59,7 +81,7 @@ export default function Result({ list }) {
 }
 
 Result.getInitialProps = async () => {
-  const response = await fetch("http://localhost:3000/api/tours"); // 3000/api/tours   //4200
+  const response = await fetch("http://localhost:3000/api/tours"); 
   const list = await response.json();
   return {
     list,

@@ -1,14 +1,19 @@
 import Link from 'next/link';
 
 export default function ToursList({ tours, amountTours }) {
+
+  
+
   return (
     <>
       {tours.map((tour, index) => {
         if (index < amountTours) {
           return (
             <div className="col-lg-3" key={tour.id}>
-              <Link href={`/tour/[id]`} as ={`/tour/${tour.id}`}>
-                <a>
+              <Link href={`/tour/[id]`}
+                as={`/tour/${tour.id}`}
+              >
+                <a >
                   <div className="tourCard">
                     <div className="tourPreview">
                       <img src={tour.imgUrl} />

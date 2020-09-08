@@ -6,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "static": "next build && next export",
-    "serve": "concurrently \"npm run dev\" \"npm run mock\"",
-    "mock": "json-server --watch db.json -p 4200 -d 450"
+    "static": "next build && next export"
   },
   "dependencies": {
     "concurrently": "^5.2.0",

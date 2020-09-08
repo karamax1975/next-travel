@@ -1,23 +1,26 @@
 import Link from 'next/link';
+import Liked from './liked';
 
-export default function tourCard({ imgUrl, country, town, adults, duration, child, id, price }) {
-
+export default function tourCard({tour, adults, duration, child }) {
+    // console.log(tour);
     const reg = /\B(?=(\d{3})+(?!\d))/g;
-    const priceOut = price.replace(reg, ' ')
+    const priceOut = tour.price.replace(reg, ' ')
 
     return (
         <div className='card-wrapper'>
-            <Link href={`/tour/[id]`} as={`/tour/${id}`}>
+            <Link href={`/tour/[id]`} as={`/tour/${tour.id}`}>
                 <a>
                     <div className="tour-card" >
                         <div className="img_wrapper">
-                            <img src={imgUrl}></img>
+                            <img src={tour.imgUrl}></img>
                         </div>
                         <div className="card-description">
-                            <p>{town}, {country}</p>
+                            <h5>{tour.town}, {tour.country}</h5>
                             <span>{duration} ночей</span>
+                            <span>{tour.type}</span>
                             <div className="card-description__down">
                                 <p>от {priceOut} руб.</p>
+                                <Liked/>
                             </div>
                         </div>
                     </div>
