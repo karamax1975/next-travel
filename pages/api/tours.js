@@ -7,8 +7,9 @@ handler.use(middleware);
 
 handler.get(async (req, res) => {
 
-    let doc = await req.db.collection('tours').find({}).toArray();
-    res.json(doc);
+    let tours = await req.db.collection('tours').find({}).toArray();
+    const sort =tours.sort((a,b)=>a.id-b.id);
+    res.json(sort);
 });
 
 export default handler;

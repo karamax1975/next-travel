@@ -1,14 +1,20 @@
 import Link from 'next/link';
 import Liked from './liked';
 
-export default function tourCard({tour, adults, duration, child }) {
-    // console.log(tour);
+import config from '../../config.json'
+
+
+export default function tourCard({tour, adults=2, duration, child=0, id }) {
+
+    const {priceAdult, priceChild}=config;
+
+    const prise = String(priceAdult*adults*tour.price+priceChild*child*tour.price)
     const reg = /\B(?=(\d{3})+(?!\d))/g;
-    const priceOut = tour.price.replace(reg, ' ')
+    const priceOut = prise.replace(reg, ' ')
 
     return (
         <div className='card-wrapper'>
-            <Link href={`/tour/[id]`} as={`/tour/${tour.id}`}>
+            <Link href={`/tour/[id]`} as={`/tour/${tour._id}`}>
                 <a>
                     <div className="tour-card" >
                         <div className="img_wrapper">

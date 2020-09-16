@@ -12,7 +12,7 @@ export function MainLayout({ children, title }) {
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet"></link>
       </Head>
 
-      <Header></Header>
+      <Header  title={title}/>
       <main>{children}</main>
     </>
   );

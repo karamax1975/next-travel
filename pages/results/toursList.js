@@ -41,13 +41,14 @@ function filterDate(array, findDate){
   }, [])
   
   
-  const itemsTours = arrTours.map(item => {
+  const itemsTours = arrTours.map((item, index) => {
     return (
       <TourCard key={item._id}
         adults={adults}
         child={child}
         duration={item.duration}
         tour = {item}
+        id={index}
       />
     )
   })
