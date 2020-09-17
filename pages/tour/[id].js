@@ -11,7 +11,7 @@ export default function Tour({ tour }) {
 }
 
 Tour.getInitialProps = async (context) => {
-  const res = await fetch(`http://localhost:3000/api/tours`);
+  const res = await fetch(`/api/tours`);
   const getTour = await res.json();
   const tour = getTour.filter(a=>a._id==context.query.id)
   return {

@@ -14,7 +14,7 @@ export default class InputTypeTour extends React.Component {
 
   componentDidMount() {
     // console.log(this.props.type);
-    fetch(`http://localhost:3000/api/${this.props.type}`)
+    fetch(`/api/${this.props.type}`)
     .then(response=>response.json())
     .then(json=>this.setState({arrayType:json}))
     document.body.addEventListener('click',(e)=> this.onClickOutside(e))

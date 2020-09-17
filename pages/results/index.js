@@ -81,7 +81,7 @@ export default function Result({ list }) {
 }
 
 Result.getInitialProps = async () => {
-  const response = await fetch("http://localhost:3000/api/tours"); 
+  const response = await fetch("/api/tours"); 
   const list = await response.json();
   return {
     list,
