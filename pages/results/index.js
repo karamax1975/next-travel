@@ -9,9 +9,9 @@ import Loader from '../../components/loaderResult';
 
 
 import ToursList from '../../components/torursList/toursList';
-import InfoSearch from './infoSearch';
-import filtersTours from './filtersTours';
-import NoRezult from './noRezult';
+import InfoSearch from '../../components/rezultPage/infoSearch';
+import filtersTours from '../../components/rezultPage/filtersTours';
+import NoRezult from '../../components/rezultPage/noRezult';
 
 export default function Result({ list }) {
 
