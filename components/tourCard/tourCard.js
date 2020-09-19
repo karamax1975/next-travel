@@ -1,16 +1,15 @@
 import Link from 'next/link';
 import Liked from './liked';
+import config from './../../config.json'
 
-import config from '../../config.json'
 
-
-export default function tourCard({tour, adults=2, duration, child=0, id }) {
+export default function tourCard({tour, adults=config.adults, child=config.child}) {
 
     const {priceAdult, priceChild}=config;
 
-    const prise = String(priceAdult*adults*tour.price+priceChild*child*tour.price)
+    const prise = String(priceAdult*adults*tour.price+priceChild*child*tour.price) // цена за поездку
     const reg = /\B(?=(\d{3})+(?!\d))/g;
-    const priceOut = prise.replace(reg, ' ')
+    const priceOut = prise.replace(reg, ' ') // вывод цены за поездку
 
     return (
         <div className='card-wrapper'>
@@ -22,7 +21,7 @@ export default function tourCard({tour, adults=2, duration, child=0, id }) {
                         </div>
                         <div className="card-description">
                             <h5>{tour.town}, {tour.country}</h5>
-                            <span>{duration} ночей</span>
+                            <span>{tour.duration} ночей</span>
                             <span>{tour.type}</span>
                             <div className="card-description__down">
                                 <p>от {priceOut} руб.</p>

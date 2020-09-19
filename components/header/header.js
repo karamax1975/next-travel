@@ -3,19 +3,19 @@ import HeaderAccount from "./account";
 import Nav from "./nav";
 import style from "./header.module.scss";
 import { useDispatch } from 'react-redux';
-import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD } from '../../reducers/actions/action_wigetSearcTour'
-
+import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD } from '../../reducers/actions/action_wigetSearcTour';
+import config from './../../config.json'
 export function Header({ title }) {
 
   const dispatch = useDispatch();
 
-  function resetFilters() {
+  function resetAllFilters() {
     dispatch(SET_SEARCH(false))
-    dispatch(SET_ADULTS(2))
-    dispatch(SET_CHILD(0))
-    dispatch(SET_COUNTRY(''))
-    dispatch(SET_TYPE(''))
-    dispatch(SET_DATE(''))
+    dispatch(SET_ADULTS(config.adults))
+    dispatch(SET_CHILD(config.child))
+    dispatch(SET_COUNTRY(null))
+    dispatch(SET_TYPE(null))
+    dispatch(SET_DATE(null))
   }
 
   const IndexHeader = () => {
@@ -26,7 +26,7 @@ export function Header({ title }) {
           <div className="row">
             <div className={`col ${style.headerIndex}`}>
               <Link href={"/"}>
-                <a onClick={resetFilters}>
+                <a onClick={resetAllFilters}>
                   <div className={style.brandName}>
                     <h1>Brand</h1>
                     <h1>Name</h1>

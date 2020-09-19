@@ -1,52 +1,58 @@
 import Router from "next/router";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
-
+import moment from 'moment';
 
 import { MainLayout } from "../../layout/MainLayout";
 import Loader from '../../components/loaderResult';
-import ToursList from './toursList';
+
+
+
+import ToursList from '../../components/torursList/toursList';
+import InfoSearch from './infoSearch';
+import filtersTours from './filtersTours';
+import NoRezult from './noRezult';
 
 export default function Result({ list }) {
 
+  
 
-  const [loader, setLoader] = useState(useSelector(state => state.wiget_SearchTours.search));
+  // const [loader, setLoader] = useState(useSelector(state => state.wiget_SearchTours.search));
   const adultTourists = useSelector(state => state.wiget_SearchTours.tourists.adults);
   const childTourists = useSelector(state => state.wiget_SearchTours.tourists.child);
   const typeType = useSelector(state => state.wiget_SearchTours.type);
   const typeCountry = useSelector(state => state.wiget_SearchTours.country);
   const typeDate = useSelector(state => state.wiget_SearchTours.date);
+  const unixDate = Number(typeDate != null ? Number(moment(typeDate, 'DD.MM.YYYY').format('x')) : moment().format('x'))
   const [arrTours, setArrTours] = useState([]);
+  const [runLoader, setRunLoader] = useState(true); 
+  const [toursLoad, setToursLoad]=useState(false);
+  const [arrFilters, setArrFilters] = useState([]);
+  const [foundTours, setFoundTours] = useState(false);
+
 
   useEffect(() => {
-    setArrTours(list);
-    setLoader(false);
-  }, [])
+    const arrfiltersValue = [];
+    arrfiltersValue.push(typeType);
+    arrfiltersValue.push(typeCountry);
+    arrfiltersValue.push(unixDate);
+    setArrFilters(arrfiltersValue);
+  }, [true])
 
-  const stringAdult = adultTourists < 2 ? 'взрослый' : 'взрослых';
-  let stringChild = childTourists ?? 'без детей'
-  switch (childTourists) {
-    case 1: {
-      stringChild = 'ребенок'
-      break
+  useEffect(() => {
+    if (list.length > 0) {
+      setRunLoader(false);
     }
-    case 2:
-    case 3:
-    case 4: {
-      stringChild = 'ребенка'
-      break
-    }
-    case 5:
-    case 6: {
-      stringChild = 'детей'
-      break
-    }
-    default: {
-      stringChild = 'без детей'
-      break
-    }
-  }
+  }, [list])
 
+  useEffect(() => {
+    if (!runLoader) {
+      const rez = filtersTours(list, arrFilters);
+      if(rez.length>0) setFoundTours(true)
+      setArrTours(rez);
+      setToursLoad(true)
+    }
+  }, [runLoader])
 
   return (
     <MainLayout title={"Results"}>
@@ -57,22 +63,20 @@ export default function Result({ list }) {
             filters
         </div>
           <div className="col-lg-9">
-            <div className="rezult-select">
-              <h6>Ваш выбор:</h6>
-              <p>страна: <span>{typeCountry == '' ? 'все страны' : typeCountry}</span></p>
-              <p>тип тура: <span>{typeType == '' ? 'все туры' : typeType}</span></p>
-              <p>дата тура: <span>{typeDate == '' ? 'открытая дата' : typeDate}</span></p>
-              <p>туристы: <span>{adultTourists} {stringAdult}, {childTourists > 0 ? `${childTourists} ${stringChild}` : stringChild}</span></p>
-            </div>
-              {loader ? <Loader /> :
-                <ToursList 
-                  adults={adultTourists}
-                  child={childTourists}
-                  tours={arrTours}
-                  filter1={typeCountry}
-                  filter2={typeType}
-                  date={typeDate}
-                />}
+            <InfoSearch
+              country={typeCountry}
+              type={typeType}
+              date={typeDate}
+              adults={adultTourists}
+              child={childTourists}
+            />
+            {runLoader ? <Loader /> :
+              <ToursList
+                adults={adultTourists}
+                child={childTourists}
+                tours={arrTours}
+              />}
+              {!foundTours && toursLoad?<NoRezult/>:''}
           </div>
         </div>
       </div>
@@ -81,7 +85,7 @@ export default function Result({ list }) {
 }
 
 Result.getInitialProps = async () => {
-  const response = await fetch("/api/tours"); 
+  const response = await fetch("/api/tours");
   const list = await response.json();
   return {
     list,

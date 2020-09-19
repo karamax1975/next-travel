@@ -1,4 +1,6 @@
 {
     "priceAdult":0.5,
-    "priceChild":0.2
+    "priceChild":0.2,
+    "adults":2,
+    "child":0
 }

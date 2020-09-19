@@ -1,8 +1,8 @@
 const initialStore = {
     search: false,
-    country: '',
-    type: '',
-    date: '',
+    country: null,
+    type: null,
+    date: null,
     tourists: {
         adults: 2,
         child: 0
