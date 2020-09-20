@@ -3,46 +3,58 @@ import Router from 'next/router';
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 
-import {SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD} from '../../reducers/actions/action_wigetSearcTour'
-import Input from "./input_typeTour";
+import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD } from '../../reducers/actions/action_wigetSearcTour';
+
+import StringInput from '../inputs/stringInput';
 import Calendar from "./input_calendar";
 import InputNumberOfTourists from './inputNumberOfTourists';
 
 
 export default function WigetFindTours() {
-  
+
 
   const dispatch = useDispatch();
 
-  const [country, setCountry] = useState({ // страна тура
-    select:useSelector(state=>state.wiget_SearchTours.country),
-    textPlaceholder: "Выберите страну"
-  });
+  const [countryPlaseholder, setCountryPlaseholder]=useState("Выберите страну");
+  const [typeTourPlaseholder, setTypeTourPlaseholder]=useState("Тип тура");
 
-  const [type, setType] = useState({ // тип тура
-    select: useSelector(state=>state.wiget_SearchTours.type),
-    textPlaceholder: "Тип тура",
-  });
 
   const [date, setDate] = useState({ // дата тура
-    select: useSelector(state=>state.wiget_SearchTours.date),
+    select: useSelector(state => state.wiget_SearchTours.date),
     textPlaceholder: "Дата тура",
   })
   const [tourists, setTourists] = useState({
-    adults: useSelector(state=>state.wiget_SearchTours.tourists.adults),
-    child: useSelector(state=>state.wiget_SearchTours.tourists.child)
+    adults: useSelector(state => state.wiget_SearchTours.tourists.adults),
+    child: useSelector(state => state.wiget_SearchTours.tourists.child)
   })
 
   const [touristPlaseholder, setTouristPlaseholder] = useState(`${tourists.adults} взрослых, без детей`);
+  const [listCountry, setListCountry] = useState([]);
+  const [listType, setListType] = useState([]);
+
 
   const [redirect, setRedirect] = useState(false);
   function Search() {
     dispatch(SET_SEARCH(true))
     dispatch(SET_ADULTS(tourists.adults))
-    dispatch(SET_CHILD(tourists.child))     
+    dispatch(SET_CHILD(tourists.child))
     setRedirect(true);
   }
 
+  useEffect(() => {
+
+    const country = fetch('/api/country');
+    const type = fetch('/api/type')
+
+    Promise.all([country, type]).then(resp => {
+      getApi(resp[0], setListCountry)
+      getApi(resp[1], setListType)
+    })
+
+    const getApi = (api, fun) => {
+      api.json().then(data => fun(data));
+    }
+  }, []);
 
 
   useEffect(() => { // редирект на страницу выгрузки
@@ -50,9 +62,6 @@ export default function WigetFindTours() {
       Router.push('/results')
     }
   }, [redirect]);
-  
-
-
 
 
 
@@ -68,44 +77,33 @@ export default function WigetFindTours() {
   // },[])
 
   function getUserSelectCountry(value) {
-    // получаю выбор страны
-    setCountry(() => {
-      if (value == country.textPlaceholder) {
-        dispatch(SET_COUNTRY(''))
-        return {
-          select: '',
-          textPlaceholder: value
-        }
-      } else {
-        dispatch(SET_COUNTRY(value))
-        return {
-          select: value,
-          textPlaceholder: value
-        }
-      }
-    })
 
-    
+    if(typeof(value)=='object' && value!==null){
+      dispatch(SET_COUNTRY(value.country))
+      setCountryPlaseholder(value.country) 
+    }
+    if(typeof(value)=='string'){
+      dispatch(SET_COUNTRY(value))
+      setCountryPlaseholder(value) 
+    }
+    if(value===null){
+      dispatch(SET_TYPE(null))
+    }
   }
 
   function getUserSelectTypeTour(value) {
     // Получаю тип тура
-    setType(() => {
-      if (value == type.textPlaceholder) {
-        dispatch(SET_TYPE(''))
-        return {
-          select: '',
-          textPlaceholder: value,
-        }
-      } else {
-        dispatch(SET_TYPE(value))
-        return {
-          select: value,
-          textPlaceholder: value
-        }
-      }
-    })
-    
+    if(typeof(value)=='object'&& value!==null){
+      dispatch(SET_TYPE(value.type))
+      setTypeTourPlaseholder(value.type) 
+    }
+    if(typeof(value)=='string'){
+      dispatch(SET_TYPE(value))
+      setTypeTourPlaseholder(value) 
+    }
+    if(value===null){
+      dispatch(SET_TYPE(null))
+    }
   }
 
 
@@ -134,6 +132,10 @@ export default function WigetFindTours() {
 
     let stringChild = child ?? 'без детей'
     switch (child) {
+      case 0: {
+        stringChild='без детей'
+        break
+      }
       case 1: {
         stringChild = 'ребенок'
         break
@@ -169,16 +171,22 @@ export default function WigetFindTours() {
           </div>
         </div>
         <div className="findTour_inputs">
-          <Input
-            getUserSelect={getUserSelectCountry}
-            type={"country"}
-            name={country.textPlaceholder}
-          />
-          <Input
-            getUserSelect={getUserSelectTypeTour}
-            type={"type"}
-            name={type.textPlaceholder}
-          />
+          <div className="input-wrapper" >
+            <StringInput
+              list={listCountry}
+              type={"country"}
+              placeholder={countryPlaseholder}
+              getValue={getUserSelectCountry}
+            />
+          </div>
+          <div className="input-wrapper" >
+            <StringInput
+              list={listType}
+              type={"type"}
+              placeholder={typeTourPlaseholder}
+              getValue={getUserSelectTypeTour}
+            />
+          </div>
           <Calendar
             name={date.textPlaceholder}
             getUserSelect={getDateTour}
@@ -197,5 +205,3 @@ export default function WigetFindTours() {
     </div>
   );
 }
-
-
