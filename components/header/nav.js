@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import style from './header.module.scss';
 
 export default function Nav() {
   const [flagOn, setFlagOn] = useState(false);

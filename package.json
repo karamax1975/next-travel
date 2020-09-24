@@ -14,7 +14,10 @@
     "next": "9.4.4",
     "next-connect": "^0.8.1",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-slick": "^0.27.11",
+    "react-slideshow-image": "^3.2.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "mongodb": "^3.6.0",

@@ -9,7 +9,7 @@ export default function StringInput({ list, type, placeholder, getValue }) {
     const [valueInput, setValueInput] = useState('');
     const [selected, setSelected] = useState(false);
     const [find, setFind] = useState('')
-    const formRef = useRef(null);
+    const formRef = useRef();
 
     useEffect(() => {
         setListLi(list)
@@ -31,10 +31,8 @@ export default function StringInput({ list, type, placeholder, getValue }) {
         setListOn(!listOn);
     }
     function onClickOutside(e) { // при клике не в открытый DropDown - он закрывается
-        if (formRef.current !== null) {
-            if (!formRef.current.contains(e.target)) {
-                setListOn(false);
-            }
+        if (!formRef.current.contains(e.target)) {
+            setListOn(false);
         }
     }
     // передаю введенный текст в главный компонент

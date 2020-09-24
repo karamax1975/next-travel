@@ -15,8 +15,8 @@ export default function WigetFindTours() {
 
   const dispatch = useDispatch();
 
-  const [countryPlaseholder, setCountryPlaseholder]=useState("Выберите страну");
-  const [typeTourPlaseholder, setTypeTourPlaseholder]=useState("Тип тура");
+  const [countryPlaseholder, setCountryPlaseholder] = useState("Выберите страну");
+  const [typeTourPlaseholder, setTypeTourPlaseholder] = useState("Тип тура");
 
 
   const [date, setDate] = useState({ // дата тура
@@ -78,30 +78,30 @@ export default function WigetFindTours() {
 
   function getUserSelectCountry(value) {
 
-    if(typeof(value)=='object' && value!==null){
+    if (typeof (value) == 'object' && value !== null) {
       dispatch(SET_COUNTRY(value.country))
-      setCountryPlaseholder(value.country) 
+      setCountryPlaseholder(value.country)
     }
-    if(typeof(value)=='string'){
+    if (typeof (value) == 'string') {
       dispatch(SET_COUNTRY(value))
-      setCountryPlaseholder(value) 
+      setCountryPlaseholder(value)
     }
-    if(value===null){
+    if (value === null) {
       dispatch(SET_TYPE(null))
     }
   }
 
   function getUserSelectTypeTour(value) {
     // Получаю тип тура
-    if(typeof(value)=='object'&& value!==null){
+    if (typeof (value) == 'object' && value !== null) {
       dispatch(SET_TYPE(value.type))
-      setTypeTourPlaseholder(value.type) 
+      setTypeTourPlaseholder(value.type)
     }
-    if(typeof(value)=='string'){
+    if (typeof (value) == 'string') {
       dispatch(SET_TYPE(value))
-      setTypeTourPlaseholder(value) 
+      setTypeTourPlaseholder(value)
     }
-    if(value===null){
+    if (value === null) {
       dispatch(SET_TYPE(null))
     }
   }
@@ -133,7 +133,7 @@ export default function WigetFindTours() {
     let stringChild = child ?? 'без детей'
     switch (child) {
       case 0: {
-        stringChild='без детей'
+        stringChild = 'без детей'
         break
       }
       case 1: {
@@ -160,48 +160,50 @@ export default function WigetFindTours() {
   }
 
   return (
-    <div className="wiget_findTour">
-      <div className="wrapper">
-        <div className="findTour_filtrs">
-          <h4>Поиск туров</h4>
-          <div className="filtrs-list">
-            <div className="filtrs-list_item"><p>Горячие туры</p></div>
-            <div className="filtrs-list_item"><p>Горячие туры</p></div>
-            <div className="filtrs-list_item"><p>Горячие туры</p></div>
+    <div className="container">
+      <div className="wiget_findTour">
+        <div className="wrapper">
+          <div className="findTour_filtrs">
+            <h4>Поиск туров</h4>
+            <div className="filtrs-list">
+              <div className="filtrs-list_item"><p>Горячие туры</p></div>
+              <div className="filtrs-list_item"><p>Горячие туры</p></div>
+              <div className="filtrs-list_item"><p>Горячие туры</p></div>
+            </div>
           </div>
-        </div>
-        <div className="findTour_inputs">
-          <div className="input-wrapper" >
-            <StringInput
-              list={listCountry}
-              type={"country"}
-              placeholder={countryPlaseholder}
-              getValue={getUserSelectCountry}
+          <div className="findTour_inputs">
+            <div className="input-wrapper" >
+              <StringInput
+                list={listCountry}
+                type={"country"}
+                placeholder={countryPlaseholder}
+                getValue={getUserSelectCountry}
+              />
+            </div>
+            <div className="input-wrapper" >
+              <StringInput
+                list={listType}
+                type={"type"}
+                placeholder={typeTourPlaseholder}
+                getValue={getUserSelectTypeTour}
+              />
+            </div>
+            <Calendar
+              name={date.textPlaceholder}
+              getUserSelect={getDateTour}
+            />
+            <InputNumberOfTourists
+              name={touristPlaseholder}
+              getUserSelect={getTourist}
             />
           </div>
-          <div className="input-wrapper" >
-            <StringInput
-              list={listType}
-              type={"type"}
-              placeholder={typeTourPlaseholder}
-              getValue={getUserSelectTypeTour}
-            />
-          </div>
-          <Calendar
-            name={date.textPlaceholder}
-            getUserSelect={getDateTour}
-          />
-          <InputNumberOfTourists
-            name={touristPlaseholder}
-            getUserSelect={getTourist}
-          />
         </div>
+        <button onClick={Search}
+          className="wiget_findTout_submit" type="submit">
+          <img src="/img/icon_search_white.svg" />
+          <span>Найти</span>
+        </button>
       </div>
-      <button onClick={Search}
-        className="wiget_findTout_submit" type="submit">
-        <img src="/img/icon_search_white.svg" />
-        <span>Найти</span>
-      </button>
     </div>
   );
 }

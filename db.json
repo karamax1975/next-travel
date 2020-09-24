@@ -1,7 +1,7 @@
 {
   "tours": [
-    {
-      "id": 1,
+    { 
+      "activity":true,
       "country": "Франция",
       "town": "Париж",
       "type":"Экскурсионные туры",
@@ -11,10 +11,10 @@
       "description": "",
       "imgUrl": "/upload/Paris.jpg",
       "start":"2020-01-01",
-      "end":"2021-01-01"
+      "end":"2022-01-01"
     },
-    {
-      "id": 2,
+    { 
+      "activity":true,
       "country": "Крит",
       "town": "Ираклион",
       "type":"Пляжный отдых",
@@ -24,10 +24,10 @@
       "description": "",
       "imgUrl": "/upload/Crit.jpg",
       "start":"2020-10-01",
-      "end":"2021-01-01"
+      "end":"2022-01-01"
     },
-    {
-      "id": 3,
+    { 
+      "activity":true,
       "country": "Чехия",
       "town": "Прага",
       "type":"Автобусные туры",
@@ -37,10 +37,10 @@
       "description": "",
       "imgUrl": "/upload/Praga.jpg",
       "start":"2020-10-01",
-      "end":"2021-01-01"
+      "end":"2022-01-01"
     },
-    {
-      "id": 4,
+    { 
+      "activity":true,
       "country": "Япония",
       "town": "Хикоти",
       "type":"Горнолыжные туры",
@@ -50,22 +50,69 @@
       "description": "",
       "imgUrl": "/upload/Hikoti.jpg",
       "start":"2020-02-01",
-      "end":"2021-01-01"
+      "end":"2022-01-01"
     },
-    {
-      "id": 5,
-      "country": "Япония",
-      "town": "Хикоти",
-      "type":"Горнолыжные туры",
-      "price": "122000",
+    { 
+      "activity":true,
+      "country": "CША",
+      "town": "Нью-Йорк",
+      "type":"Экскурсионные туры",
+      "price": "140000",
       "duration": "7",
       "number": "2",
       "description": "",
-      "imgUrl": "/upload/Hikoti.jpg",
+      "imgUrl": "/upload/NY.jpg",
       "start":"2020-02-01",
-      "end":"2021-01-01"
+      "end":"2022-01-01"
+    },
+    { 
+      "activity":true,
+      "country": "Россия",
+      "town": "Москва",
+      "type":"Экскурсионные туры",
+      "price": "30000",
+      "duration": "14",
+      "number": "2",
+      "description": "",
+      "imgUrl": "/upload/Moscow.jpg",
+      "start":"2020-05-01",
+      "end":"2022-01-01"
+    },
+    { 
+      "activity":true,
+      "country": "Италия",
+      "town": "Венеция",
+      "type":"Экскурсионные туры",
+      "price": "130000",
+      "duration": "7",
+      "number": "2",
+      "description": "",
+      "imgUrl": "/upload/Venice.jpg",
+      "start":"2020-04-01",
+      "end":"2022-01-01"
     }
   ],
+  "indexSlider":[
+    {
+      "link":"5f6cf8abee9c3604202295ab",
+      "imgUrl":"/upload/NY.jpg",
+      "title":"7 ночей в Венеции на двоих",
+      "description":"130 000 рублей"
+    },
+    {
+      "link":"5f6cf8abee9c3604202295aa",
+      "imgUrl":"/upload/Moscow.jpg",
+      "title":"14 ночей в Москве на двоих",
+      "description":"30 000 рублей"
+    },
+    {
+      "link":"5f6cf8abee9c3604202295a9",
+      "imgUrl":"/upload/NY.jpg",
+      "title":"7 ночей в Нью-Йорке на двоих",
+      "description":"140 000 рублей"
+    }
+  ],
+
   "type":[
     {
       "id":1,

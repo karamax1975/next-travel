@@ -2,11 +2,14 @@ import Link from "next/link";
 import HeaderAccount from "./account";
 import Nav from "./nav";
 import { useDispatch } from 'react-redux';
+
+
 import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD } from '../../reducers/actions/action_wigetSearcTour';
 import config from './../../config.json';
 
+import IndexSlider from '../sliders/indexSlider/indexSlider'
 
-export function Header({ title }) {
+export function IndexHeader({ title }) {
 
   const dispatch = useDispatch();
 
@@ -19,13 +22,13 @@ export function Header({ title }) {
     dispatch(SET_DATE(null))
   }
 
-  const Header = () => {
+  const IndexHeader = () => {
     const classHeader = title=="Index"?"header index":"header"
     return (
-      <header className={classHeader}>
+      <header className="index header">
         <div className="container">
           <div className="row">
-            <div className="header">
+            <div className="col headerIndex">
               <Link href={"/"}>
                 <a onClick={resetAllFilters}>
                   <div className="brandName">
@@ -44,13 +47,13 @@ export function Header({ title }) {
             </div>
           </div>
         </div>
-
+        <IndexSlider/>
       </header>
     )
   }
 
 
   return (
-    <Header/>
+    <IndexHeader/>
   );
 }
