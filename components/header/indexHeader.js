@@ -7,7 +7,8 @@ import { useDispatch } from 'react-redux';
 import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD } from '../../reducers/actions/action_wigetSearcTour';
 import config from './../../config.json';
 
-import IndexSlider from '../sliders/indexSlider/indexSlider'
+import IndexSlider from '../sliders/indexSlider/indexSlider';
+import IndexUser from './indexUser';
 
 export function IndexHeader({ title }) {
 
@@ -48,6 +49,7 @@ export function IndexHeader({ title }) {
           </div>
         </div>
         <IndexSlider/>
+        <IndexUser/>
       </header>
     )
   }

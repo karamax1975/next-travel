@@ -10,11 +10,11 @@ export default function Tours({ tours }) {
         <h1>Туры</h1>
         <ToursList tours={tours} amountTours={numberOfToursInPage}/>
       </div>
-      <style global jsx>{`
+      {/* <style global jsx>{`
         .tourPreview img {
           max-width:100%;
         }
-      `}</style>
+      `}</style> */}
 
       
     </div>

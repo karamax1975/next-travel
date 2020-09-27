@@ -21,6 +21,12 @@ button{
   background: none;
 }
 
+// ---------------- font-size
+
+h2{
+  font-size: 45px;
+}
+
 
 input{
   border: none;
@@ -28,13 +34,7 @@ input{
 input::placeholder{
   font-family: "Source Sans Pro", sans-serif;
 }
-// ----------------------------Header
-// header{
-//   position: relative;
-//   .header.index{
-//     background: white;
-//   }
-// }
+
 
 .headerAccount {
   display: flex;
@@ -72,23 +72,31 @@ input::placeholder{
       opacity: .7;
   }
 }
+.index.header{
+  .brandName {
+    background: #ffffff;
+    h1:first-child{
+      color: #4F4F4F;
+    }
+    h1:last-child{
+      color: $red;
+    }
+  }
+}
 .brandName {
-  background: #ffffff;
   width: 130px;
   height: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: solid 1px;
+  background: $red;
   h1{
     font-size: 30px;
     font-weight: 500;
-    color: #e42b27;
+    color: $white;
   }
-  h1:first-child{
-    color: #4F4F4F;
-  }
+
 }
 .userPanel{
     width: 380px;
@@ -120,6 +128,24 @@ input::placeholder{
 
 
 //----------------------- Header-Nav
+
+.index.header{
+  .link_wrapper{
+    a{
+      color: $white;
+  }
+    a:hover:after{
+      background: $white;
+    }
+  }
+
+  .nav_hamburger{
+    span{
+      background: $white;
+    }
+  }
+}
+
 .header-nav{
   display: flex;
   flex: 1;
@@ -139,7 +165,7 @@ input::placeholder{
       width: 100%;
       height: 2px;
       display: block;
-      background: red;
+      background: $red;
       border-radius: 2px;
       transition: .2s;  
       position: absolute;
@@ -171,11 +197,31 @@ input::placeholder{
     overflow: hidden;
     width: 100%;
     display: inline-block;
+    display: flex;
     a{
       white-space:nowrap;
-      padding: 0 10px;
+      // padding: 0 10px;
       font-weight: 600;
+      position: relative;
+      padding: 5px 0;
+      margin: 0 10px;
+      display: inline-flex;
 
+    }
+    a:after{
+      position: absolute;
+      content: '';
+      width: 0;
+      transition: .3s;
+    }
+    a:hover:after{
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 1px;
+      left: 0;
+      bottom: 0;
+      transition: .3s;
     }
   }
   .hidden{
@@ -221,6 +267,37 @@ input::placeholder{
 
 // ------------------------------------- IndexSlider
 
+.indexSliderPreloader{
+  width: 100%;
+  height: 500px;
+  background: $gray5;
+  position: relative;
+  top: 0;
+}
+.indexSliderPreloader::before{
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(270deg, #CECECE 0%, #E0E0E0 93.18%);
+  content: '';
+  top: 0;
+  left: 80%;
+  z-index: 10;
+  animation-duration: 2s;
+  animation-name: preloadMove;
+  animation-iteration-count: infinite;
+  animation-timing-function:linear;
+}
+@keyframes preloadMove {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+// 
 .indexSlider{
   width: 100%;
   position: absolute;
@@ -228,6 +305,42 @@ input::placeholder{
   top: 0;
   left: 0;
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(180deg, #FFFFFF 52.16%, #ECECEC 100%);
+  
+  
+  .slideItem_textContent{
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    top: 200px;
+    h2{
+      font-weight: 300;
+      color:$white;
+    }
+    .slideItem_description{
+      margin-top: 30px;
+      padding: 15px;
+      border-left: 2px solid $white;
+      p{
+        font-weight: 600;
+        font-size: 20px;
+        color: $white;
+        margin-bottom: 10px;
+      }
+      a{
+        color:$white;
+        font-weight: 400;
+        position: relative;
+        border-bottom: solid 1px $white;
+        display: inline-block;
+        padding-bottom: 5px;
+        opacity: 1;
+      }
+      a:hover{
+        opacity: .7;
+        border-bottom: none;
+      }
+    }
+  }
 }
 .index-slider{
   width: 63%;
@@ -236,10 +349,6 @@ input::placeholder{
   overflow: hidden;
   .slick-slide{
     position: relative;
-    .slideItem_textContent{
-      position: absolute;
-      top: 200px;
-    }
   }
   .nav-slider{
     position: absolute;
@@ -259,6 +368,32 @@ input::placeholder{
   .nav-slider:hover{
     opacity: .7;
   }
+  .nav-slider_dots{
+    position: absolute;
+    top: 130px;
+    left: 30px;
+    z-index: 20;
+    height: 247px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    li{
+      width: 30px;
+      cursor: pointer;
+    }
+    .slick-active{
+      span{
+        width: 25px;
+      }
+    }
+    span{
+      width: 10px;
+      height: 2px;
+      background: $white;
+      display: block;
+      margin: 7px 0;
+    }
+  }
 
   .PrevArrow{
     top:80px;
@@ -267,6 +402,17 @@ input::placeholder{
   .NextArrow{
     bottom: 80px;
   }
+}
+
+// -------------- getUserCity------------------
+.getUserCity{
+  position: absolute;
+  top:208px;
+  width: 380px;
+  z-index: 20;
+  background:silver;
+  display: flex;
+  justify-content: space-between;
 }
 
 // ------------------------------ Find Tours ------------------

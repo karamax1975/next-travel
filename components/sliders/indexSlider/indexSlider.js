@@ -5,23 +5,32 @@ import Link from 'next/link';
 
 export default function IndexSlider() {
     const slideRef = useRef();
-    const bodyRef = useRef();
     const [arraySlide, setArraySlide] = useState([]);
-    const [bodyWidth, setBodyWidth]=useState(0)
-
-    
+    const [posLeft, setPosLeft] = useState(0);
+    // const [width, setWidth]=useState(0)
 
     useEffect(() => {
+        
         async function getSlideList() {
             const response = await fetch('/api/indexSlider');
             let list = await response.json();
             setArraySlide(list);
         }
         getSlideList()
-        setBodyWidth(document.body.clientWidth);
+
+        // ----------- Устанавливаем левый край container
+        const bodyWidth = document.body.clientWidth;
+        let container = 1320;
+        if (bodyWidth > 1400) {
+            container = 1320;
+        }
+        if (bodyWidth > 1200 && bodyWidth < 1400) {
+            container = 1140;
+        }
+        setPosLeft(Math.round(Number(document.body.clientWidth - container) / 2))
+
     }, [])
 
-    console.log(bodyWidth);
     function SampleNextArrow() {
         const gotoNext = () => {
             slideRef.current.slickNext()
@@ -49,43 +58,53 @@ export default function IndexSlider() {
         );
     }
 
+    const preLoad = <div className="indexSliderPreloader"></div>
+
     var settings = {
-        // dots: true,
+        dots: true,
         fade: true,
         autoplay: true,
         infinite: true,
-        speed: 500,
+        speed: 1000,
+        autoplaySpeed: 5000,
         slidesToShow: 1,
         slidesToScroll: 1,
         className: "index-slider",
+        dotsClass: 'nav-slider_dots',
+        touchMove:true,
         nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
+        prevArrow: <SamplePrevArrow />,
+        appendDots: dots => (
+            <ul> {dots} </ul>
+        ),
+        customPaging: () => (
+            <span></span>
+        )
     };
-
 
     return (
         <div className="indexSlider">
             <Slider {...settings} ref={slideRef}>
-                {arraySlide.map(item => {
-                    return (
-                        <div key={item._id} className="slideItem">
-                            <img src={item.imgUrl}></img>
-                            <div className="slideItem_textContent">
-                                <h2>{item.title}</h2>
-                                <p>{item.description}</p>
-                                <Link href={`/tour/[id]`} as={`/tour/${item.link}`}><a>Подробнее</a></Link>
+                {arraySlide.length > 0
+                    ? arraySlide.map(item => {
+                        return (
+                            <div key={item._id} className="slideItem">
+                                <img src={item.imgUrl}></img>
+                                <div className="slideItem_textContent" style={{ left: `${posLeft}px` }}>
+                                    <h2>{item.title}</h2>
+                                    <div className="slideItem_description">
+                                        <p>от {item.description}</p>
+                                        <Link href={`/tour/[id]`} as={`/tour/${item.link}`}><a>Подробнее</a></Link>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    )
-                })}
-
+                        )
+                    })
+                    : preLoad}
             </Slider>
         </div>
+
     );
 
-
-
-
-
-
 }
+
