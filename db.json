@@ -95,58 +95,62 @@
   "indexSlider":[
     {
       "link":"5f6cf8abee9c3604202295ab",
-      "imgUrl":"/upload/NY.jpg",
+      "imgUrl":"/upload/slide_1.jpg",
       "title":"7 ночей в Венеции на двоих",
-      "description":"130 000 рублей"
+      "description":"130 000 рублей",
+      "type":"tours"
     },
     {
       "link":"5f6cf8abee9c3604202295aa",
-      "imgUrl":"/upload/Moscow.jpg",
+      "imgUrl":"/upload/slide_3.jpg",
       "title":"14 ночей в Москве на двоих",
-      "description":"30 000 рублей"
+      "description":"30 000 рублей",
+      "type":"tours"
     },
     {
       "link":"5f6cf8abee9c3604202295a9",
-      "imgUrl":"/upload/NY.jpg",
+      "imgUrl":"/upload/slide_2.jpg",
       "title":"7 ночей в Нью-Йорке на двоих",
-      "description":"140 000 рублей"
+      "description":"140 000 рублей",
+      "type":"tours"
     }
   ],
 
   "type":[
     {
-      "id":1,
       "type":"Автобусные туры"
     },
     {
-      "id":2,
       "type":"Горнолыжные туры"
     },
     {
-      "id":3,
       "type":"Пляжный отдых"
     },
     {
-      "id":4,
       "type":"Экскурсионные туры"
     }
   ],
   "country":[
     {
-      "id":1,
       "country":"Крит"
     },
     {
-      "id":2,
       "country":"Франция"
     },
     {
-      "id":3,
       "country":"Чехия"
     },
     {
-      "id":4,
       "country":"Япония"
+    },
+    {
+      "country":"Россия"
+    },
+    {
+      "country":"Италия"
+    },
+    {
+      "country":"США"
     }
   ]
 }

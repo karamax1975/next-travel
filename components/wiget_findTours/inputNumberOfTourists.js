@@ -10,7 +10,7 @@ export default function inputNumberOfTourists({ name, getUserSelect }) {
     })
     
 
-    const myRef = useRef(null);
+    const myRef = useRef();
 
     function externalClick(e) {
         if (myRef.current != null)

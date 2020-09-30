@@ -1,5 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import resizeContainer from './resizeContainer';
 
+
+import UserCity from '../header/userCity'
+import {Fb_gray, Instagram, Vk} from '../socialIcons/linkSocial_Icons';
 
 export default function indexUser(){
     const [posRight, setPosRight] = useState(0);
@@ -7,29 +11,33 @@ export default function indexUser(){
     useEffect(() => {
         
         const bodyWidth = document.body.clientWidth;
-
-        // console.log(bodyWidth);
-        let container = 1320;
-        if (bodyWidth > 1400) {
-            container = 1320;
-        }
-        console.log(container);
-        if (bodyWidth > 1200 && bodyWidth < 1400) {
-            container = 1140;
-        }
-        setPosRight(Math.round(Number(document.body.clientWidth - container) / 2 ))
-        
-
+        setPosRight(Math.round(Number(bodyWidth - resizeContainer(bodyWidth)) / 2 ))
     },[])
+
+
+    useEffect(()=>{
+        window.addEventListener(`resize`, ()=>{    
+            const bodyWidth = document.body.clientWidth;
+            setPosRight(Math.round(Number(bodyWidth - resizeContainer(bodyWidth)) / 2 ))
+        })
+    },[posRight])
+
 
     return (
         <div className="getUserCity" style={{right:`${posRight}px`}}>
-            <div className="selectUserCity">
-                fdddfd
+            <div className="contact">
+                <UserCity/>
+                <div className="contact_phone" >
+                    <span>Бесплатная горячая линия:</span>
+                    <a href="tel:+788006000001"><h6 >+7 8 800 600 00 01</h6></a>
+                </div>
             </div>
-            <div className="sharingSocial">
-                sdssdsds
-            </div>
+            
+            <ul className="adressSocial">
+                <li><Fb_gray color={'gray'}/></li>
+                <li><Instagram color={'gray'}/></li>
+                <li><Vk color={'gray'}/></li>
+            </ul>
         </div>
     )
 }

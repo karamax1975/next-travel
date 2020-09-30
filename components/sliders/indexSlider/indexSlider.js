@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
+import resizeContainer from '../../header/resizeContainer'
 
 export default function IndexSlider() {
     const slideRef = useRef();
@@ -20,16 +21,17 @@ export default function IndexSlider() {
 
         // ----------- Устанавливаем левый край container
         const bodyWidth = document.body.clientWidth;
-        let container = 1320;
-        if (bodyWidth > 1400) {
-            container = 1320;
-        }
-        if (bodyWidth > 1200 && bodyWidth < 1400) {
-            container = 1140;
-        }
-        setPosLeft(Math.round(Number(document.body.clientWidth - container) / 2))
+        setPosLeft(Math.round(Number(document.body.clientWidth - resizeContainer(bodyWidth)) / 2))
 
     }, [])
+
+    useEffect(()=>{
+        window.addEventListener(`resize`, ()=>{    
+            const bodyWidth = document.body.clientWidth;
+            setPosLeft(Math.round(Number(document.body.clientWidth - resizeContainer(bodyWidth)) / 2))
+        })
+    },[posLeft])
+
 
     function SampleNextArrow() {
         const gotoNext = () => {
@@ -81,7 +83,7 @@ export default function IndexSlider() {
             <span></span>
         )
     };
-
+    
     return (
         <div className="indexSlider">
             <Slider {...settings} ref={slideRef}>
@@ -94,7 +96,7 @@ export default function IndexSlider() {
                                     <h2>{item.title}</h2>
                                     <div className="slideItem_description">
                                         <p>от {item.description}</p>
-                                        <Link href={`/tour/[id]`} as={`/tour/${item.link}`}><a>Подробнее</a></Link>
+                                        <Link href={`/${item.type}/[id]`} as={`/${item.type}/${item.link}`}><a>Подробнее</a></Link>
                                     </div>
                                 </div>
                             </div>
