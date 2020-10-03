@@ -271,8 +271,8 @@ input::placeholder{
 
 }
 
-// ------------------------------------- IndexSlider
-
+// ================================== IndexSlider =========
+// ---------------PreLoader
 .indexSliderPreloader{
   width: 100%;
   height: 500px;
@@ -303,7 +303,8 @@ input::placeholder{
     left: 100%;
   }
 }
-// 
+// ---------------------- Slider
+
 .indexSlider{
   width: 100%;
   position: absolute;
@@ -324,7 +325,6 @@ input::placeholder{
     }
     .slideItem_description{
       margin-top: 30px;
-      // padding: 15px;
       p{
         font-weight: 600;
         font-size: 20px;
@@ -332,25 +332,17 @@ input::placeholder{
         margin-bottom: 30px;
       }
       a{
-        // display: block;
+
         background: $red;
         padding: 12px 30px;
         color:$white;
         border-radius: 3px;
         font-size: 14px;
-        // font-weight: 400;
-        // position: relative;
-        // border-bottom: solid 1px $white;
-        // display: inline-block;
-        // padding-bottom: 5px;
-        // opacity: 1;
       }
       a:hover{
         background: $light_red;
         transition: .3s;
         box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
-        // opacity: .7;
-        // border-bottom: none;
       }
     }
   }
@@ -512,19 +504,23 @@ input::placeholder{
         color:$red;
         margin-right: 50px;
       }
-      .filtrs-list{
-        font-weight: 300;
-        font-size: 16px;
-        line-height: 100%;
-        .filtrs-list_item{
+      .tagsList{
+        display: flex;
+        flex-wrap: wrap;
+        .tagItem{
           margin-right: 15px;
           cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
           padding: 10px 20px;
-          border: solid 1px $gray5;
-          border-radius: 20px;
+          border: solid 1px $gray4;
+          border-radius: 30px;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 100%;
+        }
+        .active{
+          background: $red;
+          border-color: $red;
+          color: $white;
         }
         :last-child{
           margin-right: 0;

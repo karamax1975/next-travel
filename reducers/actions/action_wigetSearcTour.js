@@ -28,3 +28,13 @@ export const SET_CHILD=(payload)=>{
         type:'SET_CHILD', payload:payload
     }
 }
+export const ADD_TAG=(payload)=>{
+    return{
+        type:'ADD_TAG', payload:payload
+    }
+}
+export const DEL_TAG=(payload)=>{
+    return{
+        type:"DEL_TAG", payload:payload
+    }
+}

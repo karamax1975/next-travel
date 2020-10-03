@@ -8,6 +8,7 @@ import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD } fr
 import StringInput from '../inputs/stringInput';
 import Calendar from "./input_calendar";
 import InputNumberOfTourists from './inputNumberOfTourists';
+import TagsList from './tagsList'
 
 
 export default function WigetFindTours() {
@@ -165,11 +166,7 @@ export default function WigetFindTours() {
         <div className="wrapper">
           <div className="findTour_filtrs">
             <h4>Поиск туров</h4>
-            <div className="filtrs-list">
-              <div className="filtrs-list_item"><p>Горячие туры</p></div>
-              <div className="filtrs-list_item"><p>Горячие туры</p></div>
-              <div className="filtrs-list_item"><p>Горячие туры</p></div>
-            </div>
+            <TagsList/>
           </div>
           <div className="findTour_inputs">
             <div className="input-wrapper" >

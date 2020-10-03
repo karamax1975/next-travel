@@ -6,7 +6,8 @@ const initialStore = {
     tourists: {
         adults: 2,
         child: 0
-    }
+    },
+    tags:[]
 }
 
 export default function wiget_SearchTours(store = initialStore, action) {
@@ -40,6 +41,14 @@ export default function wiget_SearchTours(store = initialStore, action) {
                     child: action.payload
                 }
             }
+        }
+        case 'ADD_TAG': {
+            const arr=store.tags;
+            arr.push(action.payload)
+            return { ...store, tags: arr }
+        }
+        case 'DEL_TAG':{
+            return {...store, tags:store.tags.filter(item=>item!=action.payload)}
         }
 
 
