@@ -12,21 +12,24 @@ import ToursList from '../../components/torursList/toursList';
 import InfoSearch from '../../components/rezultPage/infoSearch';
 import filtersTours from '../../components/rezultPage/filtersTours';
 import NoRezult from '../../components/rezultPage/noRezult';
-
+import filterTags from '../../components/rezultPage/filterTags';
 export default function Result({ list }) {
 
-  
+
 
   // const [loader, setLoader] = useState(useSelector(state => state.wiget_SearchTours.search));
+
   const adultTourists = useSelector(state => state.wiget_SearchTours.tourists.adults);
   const childTourists = useSelector(state => state.wiget_SearchTours.tourists.child);
   const typeType = useSelector(state => state.wiget_SearchTours.type);
   const typeCountry = useSelector(state => state.wiget_SearchTours.country);
   const typeDate = useSelector(state => state.wiget_SearchTours.date);
+  const tags = useSelector(state => state.wiget_SearchTours.tags);
+
   const unixDate = Number(typeDate != null ? Number(moment(typeDate, 'DD.MM.YYYY').format('x')) : moment().format('x'))
   const [arrTours, setArrTours] = useState([]);
-  const [runLoader, setRunLoader] = useState(true); 
-  const [toursLoad, setToursLoad]=useState(false);
+  const [runLoader, setRunLoader] = useState(true);
+  const [toursLoad, setToursLoad] = useState(false);
   const [arrFilters, setArrFilters] = useState([]);
   const [foundTours, setFoundTours] = useState(false);
 
@@ -47,11 +50,19 @@ export default function Result({ list }) {
 
   useEffect(() => {
     if (!runLoader) {
-      const rez = filtersTours(list, arrFilters);
-      if(rez.length>0) setFoundTours(true)
+      let rez = filtersTours(list, arrFilters);
+      if (tags.length > 0) {
+        rez = filterTags(rez, tags)
+      }
+      if (rez.length > 0) {
+        setFoundTours(true)
+      }
+
       setArrTours(rez);
-      setToursLoad(true)
+      setToursLoad(true);
     }
+
+
   }, [runLoader])
 
   return (
@@ -69,6 +80,7 @@ export default function Result({ list }) {
               date={typeDate}
               adults={adultTourists}
               child={childTourists}
+              tag={tags}
             />
             {runLoader ? <Loader /> :
               <ToursList
@@ -76,7 +88,7 @@ export default function Result({ list }) {
                 child={childTourists}
                 tours={arrTours}
               />}
-              {!foundTours && toursLoad?<NoRezult/>:''}
+            {!foundTours && toursLoad ? <NoRezult /> : ''}
           </div>
         </div>
       </div>

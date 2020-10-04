@@ -38,3 +38,8 @@ export const DEL_TAG=(payload)=>{
         type:"DEL_TAG", payload:payload
     }
 }
+export const CLEAR_TAGS=()=>{
+    return{
+        type:"CLEAR_TAGS"
+    }
+}

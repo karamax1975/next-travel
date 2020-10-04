@@ -50,6 +50,9 @@ export default function wiget_SearchTours(store = initialStore, action) {
         case 'DEL_TAG':{
             return {...store, tags:store.tags.filter(item=>item!=action.payload)}
         }
+        case 'CLEAR_TAGS':{
+            return {...store, tags:[]}
+        }
 
 
         default:

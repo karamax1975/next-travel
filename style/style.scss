@@ -831,13 +831,11 @@ input::placeholder{
     }
   }
 }
-// Rezult search
+// Rezult search --------------------------------
 .rezult-select{
-  display: flex;
+  border: solid 1px $gray6;
   padding: 15px;
   margin-bottom: 30px;
-  align-items: center;
-  border: solid 1px $gray6;
   p{
     margin-right: 15px;
     font-size: 16px;
@@ -861,4 +859,16 @@ input::placeholder{
     color: $gray2;
     font-weight: 400;
   }
+  .rezult-select-filters{
+    display: flex;
+    align-items: center;
+    
+  }
+  .rezult-select-tags{
+    display: flex;
+    margin-top: 15px;
+    border-top: dashed 1px $gray6;
+    padding-top: 15px;
+  }
+
 }

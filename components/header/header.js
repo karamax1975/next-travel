@@ -2,7 +2,7 @@ import Link from "next/link";
 import HeaderAccount from "./account";
 import Nav from "./nav";
 import { useDispatch } from 'react-redux';
-import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD } from '../../reducers/actions/action_wigetSearcTour';
+import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD, CLEAR_TAGS } from '../../reducers/actions/action_wigetSearcTour';
 import config from './../../config.json';
 
 
@@ -16,7 +16,7 @@ export function Header({ title }) {
     dispatch(SET_CHILD(config.child))
     dispatch(SET_COUNTRY(null))
     dispatch(SET_TYPE(null))
-    dispatch(SET_DATE(null))
+    dispatch(CLEAR_TAGS())
   }
 
   const Header = () => {
