@@ -25,11 +25,16 @@ export default function IndexSlider() {
 
     }, [])
 
+    function ResizeLeft(){
+        const bodyWidth = document.body.clientWidth;
+        setPosLeft(Math.round(Number(document.body.clientWidth - resizeContainer(bodyWidth)) / 2))
+    }
+
     useEffect(()=>{
-        window.addEventListener(`resize`, ()=>{    
-            const bodyWidth = document.body.clientWidth;
-            setPosLeft(Math.round(Number(document.body.clientWidth - resizeContainer(bodyWidth)) / 2))
-        })
+        window.addEventListener(`resize`, ResizeLeft);
+        return ()=>{
+            window.removeEventListener(`resize`, ResizeLeft)
+        }
     },[posLeft])
 
 

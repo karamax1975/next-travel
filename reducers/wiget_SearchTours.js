@@ -1,12 +1,12 @@
+import config from '../config.json'
+
 const initialStore = {
     search: false,
     country: null,
     type: null,
     date: null,
-    tourists: {
-        adults: 2,
-        child: 0
-    },
+    adults:config.adults,
+    child:config.child,
     tags:[]
 }
 
@@ -25,22 +25,10 @@ export default function wiget_SearchTours(store = initialStore, action) {
             return { ...store, date: action.payload }
         }
         case 'SET_ADULTS': {
-            return {
-                ...store,
-                tourists: {
-                    adults:action.payload,
-                    child:store.tourists.child
-                }
-            }
+            return {...store, adults:action.payload}
         }
         case 'SET_CHILD': {
-            return {
-                ...store,
-                tourists: {
-                    adults:store.tourists.adults,
-                    child: action.payload
-                }
-            }
+            return {...store, child: action.payload}
         }
         case 'ADD_TAG': {
             const arr=store.tags;

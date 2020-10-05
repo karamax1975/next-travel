@@ -8,16 +8,16 @@ import config from './../../config.json';
 
 export function Header({ title }) {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  function resetAllFilters() {
-    dispatch(SET_SEARCH(false))
-    dispatch(SET_ADULTS(config.adults))
-    dispatch(SET_CHILD(config.child))
-    dispatch(SET_COUNTRY(null))
-    dispatch(SET_TYPE(null))
-    dispatch(CLEAR_TAGS())
-  }
+  // function resetAllFilters() {
+  //   dispatch(SET_SEARCH(false))
+  //   dispatch(SET_ADULTS(config.adults))
+  //   dispatch(SET_CHILD(config.child))
+  //   dispatch(SET_COUNTRY(null))
+  //   dispatch(SET_TYPE(null))
+  //   dispatch(CLEAR_TAGS())
+  // }
 
   const Header = () => {
     const classHeader = title=="Index"?"header index":"header"
@@ -27,7 +27,7 @@ export function Header({ title }) {
           <div className="row">
             <div className="header">
               <Link href={"/"}>
-                <a onClick={resetAllFilters}>
+                <a >
                   <div className="brandName">
                     <h1>Brand</h1>
                     <h1>Name</h1>

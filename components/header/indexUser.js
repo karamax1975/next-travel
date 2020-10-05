@@ -8,18 +8,22 @@ import {Fb_gray, Instagram, Vk} from '../socialIcons/linkSocial_Icons';
 export default function indexUser(){
     const [posRight, setPosRight] = useState(0);
 
-    useEffect(() => {
-        
+    useEffect(() => { 
         const bodyWidth = document.body.clientWidth;
         setPosRight(Math.round(Number(bodyWidth - resizeContainer(bodyWidth)) / 2 ))
     },[])
 
 
+    function resizeRight(){
+        const bodyWidth = document.body.clientWidth;
+        setPosRight(Math.round(Number(bodyWidth - resizeContainer(bodyWidth)) / 2 ))
+    }
+
     useEffect(()=>{
-        window.addEventListener(`resize`, ()=>{    
-            const bodyWidth = document.body.clientWidth;
-            setPosRight(Math.round(Number(bodyWidth - resizeContainer(bodyWidth)) / 2 ))
-        })
+        window.addEventListener(`resize`, resizeRight)
+        return ()=>{
+            window.removeEventListener('resize',resizeRight)
+        }
     },[posRight])
 
 

@@ -15,6 +15,9 @@ body {
 a {
   text-decoration: none;
 }
+div{
+  box-sizing:border-box;
+}
 
 button{
   border: none;
@@ -757,7 +760,7 @@ input::placeholder{
 
   .card-wrapper{
     flex: 0 0 auto;
-    width: calc((100% / 3) - 30px);
+    width: calc(100% / 3);
     margin-bottom: 30px;
     padding-left: 15px;
     padding-right: 15px;
@@ -872,3 +875,76 @@ input::placeholder{
   }
 
 }
+// ================= Rezult Loader ==============
+
+  .hostCard{
+    border-radius: 2px;
+    .hostImg{
+      background: $gray6;
+      width: 100%;
+      height: 150px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hostImg::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(-270deg, #F2F2F2 0%, #E0E0E0 100%);
+      animation-name: host;
+      animation-timing-function:linear;
+      animation-iteration-count: infinite;
+      animation-duration: 2s;
+    }
+    .hostDescription{
+      height: 150px;
+      width: 100%;
+      padding: 17px;
+      padding-bottom: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1 1 100%;
+      .hostText{
+        height: 15px;
+        background: $gray6;
+        width: 100%;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hostText::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(-270deg, #F2F2F2 0%, #E0E0E0 100%);
+        animation-name: hostText;
+        animation-timing-function:linear;
+        animation-iteration-count: infinite;
+        animation-duration: 2s;
+      }
+      
+    }
+  }
+  @keyframes host{
+    from{
+      left: -50%;
+    }
+    to{
+      left: 150%;
+    }
+  }
+  @keyframes hostText{
+    from{
+      left: -56%;
+    }
+    to{
+      left: 168%;
+    }
+  }
+
+

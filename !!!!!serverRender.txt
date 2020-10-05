@@ -1,0 +1,7 @@
+function.getInitialProps = async () => {
+  const response = await fetch("/api/tours");
+  const list = await response.json();
+  return {
+    list,
+  };
+};

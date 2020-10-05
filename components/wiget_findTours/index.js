@@ -25,8 +25,8 @@ export default function WigetFindTours() {
     textPlaceholder: "Дата тура",
   })
   const [tourists, setTourists] = useState({
-    adults: useSelector(state => state.wiget_SearchTours.tourists.adults),
-    child: useSelector(state => state.wiget_SearchTours.tourists.child)
+    adults: useSelector(state => state.wiget_SearchTours.adults),
+    child: useSelector(state => state.wiget_SearchTours.child)
   })
 
   const [touristPlaseholder, setTouristPlaseholder] = useState(`${tourists.adults} взрослых, без детей`);
@@ -128,7 +128,7 @@ export default function WigetFindTours() {
       }
     })
 
-    const srtingAdults = adults > 1 ? 'взрослых' : 'взрослый';
+    const stringAdults = adults > 1 ? 'взрослых' : 'взрослый';
     const numberChild = child > 0 ? child : ''
 
     let stringChild = child ?? 'без детей'
@@ -157,7 +157,7 @@ export default function WigetFindTours() {
         break
       }
     }
-    setTouristPlaseholder(`${adults} ${srtingAdults}, ${numberChild} ${stringChild}`)
+    setTouristPlaseholder(`${adults} ${stringAdults}, ${numberChild} ${stringChild}`)
   }
 
   return (
