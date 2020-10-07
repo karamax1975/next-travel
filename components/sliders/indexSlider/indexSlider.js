@@ -67,7 +67,7 @@ export default function IndexSlider() {
 
     const preLoad = <div className="indexSliderPreloader"></div>
 
-    var settings = {
+    const settings = {
         dots: true,
         fade: true,
         autoplay: true,

@@ -53,11 +53,12 @@
       "description": "",
       "imgUrl": "/upload/Hikoti.jpg",
       "start":"2020-02-01",
+      "end":"2022-12-01",
       "tags":""
     },
     { 
       "activity":true,
-      "country": "CША",
+      "country": "США",
       "town": "Нью-Йорк",
       "type":"Экскурсионные туры",
       "price": "140000",
@@ -96,6 +97,62 @@
       "start":"2020-04-01",
       "end":"2022-01-01",
       "tags":"Все включено"
+    },
+    { 
+      "activity":true,
+      "country": "Куба",
+      "town": "Гаванна",
+      "type":"Пляжный отдых",
+      "price": "110000",
+      "duration": "7",
+      "number": "2",
+      "description": "",
+      "imgUrl": "/upload/Cuba.jpg",
+      "start":"2020-04-01",
+      "end":"2024-01-01",
+      "tags":"Все включено"
+    },
+    { 
+      "activity":true,
+      "country": "Сингапур",
+      "town": "Сингапур",
+      "type":"Пляжный отдых",
+      "price": "150000",
+      "duration": "14",
+      "number": "2",
+      "description": "",
+      "imgUrl": "/upload/Singapur.jpg",
+      "start":"2020-04-01",
+      "end":"2024-01-01",
+      "tags":"Горячие туры"
+    },
+    { 
+      "activity":true,
+      "country": "США",
+      "town": "Гаваи",
+      "type":"Пляжный отдых",
+      "price": "250000",
+      "duration": "14",
+      "number": "2",
+      "description": "",
+      "imgUrl": "/upload/Gavai.jpg",
+      "start":"2020-04-01",
+      "end":"2024-01-01",
+      "tags":"Семейный отдых"
+    },
+    { 
+      "activity":true,
+      "country": "Французская Полинезия ",
+      "town": "Бора-Бора",
+      "type":"Пляжный отдых",
+      "price": "320000",
+      "duration": "14",
+      "number": "2",
+      "description": "",
+      "imgUrl": "/upload/Bora-bora.jpg",
+      "start":"2020-04-01",
+      "end":"2024-01-01",
+      "tags":"Семейный отдых"
     }
   ],
   "indexSlider":[
@@ -119,6 +176,40 @@
       "title":"7 ночей в Нью-Йорке на двоих",
       "description":"140 000 рублей",
       "type":"tours"
+    }
+  ],
+  "sliderRow":[
+    {
+      "link":"5f7cd8b13b43850cc0efac95",
+      "imgUrl":"/upload/slideRow_Gavana.jpg",
+      "title":"Гавана, Куба",
+      "description":"Остров Свободы, который неизменно ассоциируется с команданте Че Гевара, ромом и сигарами",
+      "duration":"на двоих, 7 ночей",
+      "prise":"от 110 000 рублей"
+    },
+    {
+      "link":"5f7cd8b13b43850cc0efac96",
+      "imgUrl":"/upload/slideRow_Singapur.jpg",
+      "title":"Сингапур",
+      "description":"Сингапур находится в близи экватора, что обеспечивает круглогодичный пляжный отдых",
+      "duration":"на двоих, 14 ночей",
+      "prise":"от 150 000 рублей"
+    },
+    {
+      "link":"5f7cd8b13b43850cc0efac97",
+      "imgUrl":"/upload/slideRow_Gavai.jpg",
+      "title":"Гавайи, США",
+      "description":"Наградой тем, кто сюда доберется, становятся фантастические рассветы на разноцветных пляжах",
+      "duration":"на двоих, 14 ночей",
+      "prise":"от 250 000 рублей"
+    },
+    {
+      "link":"5f7cd8b13b43850cc0efac98",
+      "imgUrl":"/upload/slideRow_Bora-bora.jpg",
+      "title":"Бора-Бора, Французская Полинезия",
+      "description":"Это идеальное место для отдыха. Теплая и чистая вода, лазурный берег, теплый и мягкий песок",
+      "duration":"на двоих, 14 ночей",
+      "prise":"от 320 000 рублей"
     }
   ],
 
