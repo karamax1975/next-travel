@@ -2,22 +2,24 @@ import Slider from "react-slick";
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
-import resizeContainer from '../../header/resizeContainer'
+import resizeContainer from '../../header/resizeContainer';
+import config from '../../../config.json';
+import {_getDataFromAPI} from '../../../inc/getData';
 
 export default function IndexSlider() {
     const slideRef = useRef();
     const [arraySlide, setArraySlide] = useState([]);
     const [posLeft, setPosLeft] = useState(0);
-    // const [width, setWidth]=useState(0)
+    
+    const {sliders}=config;
+    
 
     useEffect(() => {
         
-        async function getSlideList() {
-            const response = await fetch('/api/indexSlider');
-            let list = await response.json();
-            setArraySlide(list);
-        }
-        getSlideList()
+      _getDataFromAPI(sliders[1]).then(data=>{
+          setArraySlide(data)
+        })
+        
 
         // ----------- Устанавливаем левый край container
         const bodyWidth = document.body.clientWidth;

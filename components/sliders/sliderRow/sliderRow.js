@@ -2,17 +2,21 @@ import Slider from "react-slick";
 import { useEffect, useRef, useState } from 'react';
 import Link from "next/link";
 
+import {_getDataFromAPI} from '../../../inc/getData';
+import config from '../../../config.json'
+
 export default function SliderRow({ titleSection }) {
   const [arraySlide, setArraySlide] = useState([])
   const slideRef = useRef();
 
+  const {sliders}=config;
 
   useEffect(() => {
-    async function getSlide() {
-      const response = await fetch('api/sliderRow');
-      return await response.json()
-    }
-    getSlide().then(data => {
+    // async function getSlide() {
+    //   const response = await fetch('api/sliderRow');
+    //   return await response.json()
+    // }
+    _getDataFromAPI(sliders[0]).then(data => {
       setArraySlide(data);
     })
   }, [])

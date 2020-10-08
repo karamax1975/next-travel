@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Router from 'next/router';
 import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 
 import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD } from '../../reducers/actions/action_wigetSearcTour';
 
+import {_getDataFromAPI} from '../../inc/getData';
+import config from '../../config.json';
 import StringInput from '../inputs/stringInput';
 import Calendar from "./input_calendar";
 import InputNumberOfTourists from './inputNumberOfTourists';
 import TagsList from './tagsList'
+
+const {wigetSelectTours} = config;
 
 
 export default function WigetFindTours() {
@@ -44,17 +48,13 @@ export default function WigetFindTours() {
 
   useEffect(() => {
 
-    const country = fetch('/api/country');
-    const type = fetch('/api/type')
-
-    Promise.all([country, type]).then(resp => {
-      getApi(resp[0], setListCountry)
-      getApi(resp[1], setListType)
-    })
-
-    const getApi = (api, fun) => {
-      api.json().then(data => fun(data));
-    }
+    _getDataFromAPI(wigetSelectTours[0]).then(country=>{
+      setListCountry(country)
+    });
+    _getDataFromAPI(wigetSelectTours[1]).then(type=>{
+      setListType(type)
+    });
+    
   }, []);
 
 
@@ -172,7 +172,7 @@ export default function WigetFindTours() {
             <div className="input-wrapper" >
               <StringInput
                 list={listCountry}
-                type={"country"}
+                type={wigetSelectTours[0]}
                 placeholder={countryPlaseholder}
                 getValue={getUserSelectCountry}
               />
@@ -180,7 +180,7 @@ export default function WigetFindTours() {
             <div className="input-wrapper" >
               <StringInput
                 list={listType}
-                type={"type"}
+                type={wigetSelectTours[1]}
                 placeholder={typeTourPlaseholder}
                 getValue={getUserSelectTypeTour}
               />

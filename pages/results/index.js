@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 
 import config from './../../config.json';
+import {_getDataFromAPI} from '../../inc/getData'
 import { MainLayout } from "../../layout/MainLayout";
 import Loader from '../../components/loaderResult';
 import ToursList from '../../components/torursList/toursList';
@@ -18,6 +19,7 @@ import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD, CLE
 
 export default function Result() {
 
+  const {API} = config;
   const dispatch = useDispatch();
   const adultTourists = useSelector(state => state.wiget_SearchTours.adults);
   const childTourists = useSelector(state => state.wiget_SearchTours.child);
@@ -35,11 +37,7 @@ export default function Result() {
 
   
   useEffect(() => {
-     async function loadTours(){
-       const res = await fetch("/api/tours");
-       return res.json()
-     } 
-     loadTours().then(data=>{
+     _getDataFromAPI(API[0]).then(data=>{
       setArrTours(data);
       setLoad(true)
      })
@@ -54,7 +52,6 @@ export default function Result() {
        dispatch(SET_TYPE(null))
        dispatch(SET_DATE(null))
        dispatch(CLEAR_TAGS())
-       setArrTours([])
 
       // -------------------------
     }
