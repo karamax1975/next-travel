@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import resizeContainer from '../../header/resizeContainer';
 import config from '../../../config.json';
-import {_getDataFromAPI} from '../../../inc/getData';
+import {_getDataFromAPI} from '../../../lib/client/getData';
 
 export default function IndexSlider() {
     const slideRef = useRef();

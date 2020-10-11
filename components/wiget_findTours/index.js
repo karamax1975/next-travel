@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD } from '../../reducers/actions/action_wigetSearcTour';
 
-import {_getDataFromAPI} from '../../inc/getData';
+import {_getDataFromAPI} from '../../lib/client/getData';
 import config from '../../config.json';
 import StringInput from '../inputs/stringInput';
 import Calendar from "./input_calendar";

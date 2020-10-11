@@ -6,7 +6,6 @@ const handler = nextConnect();
 handler.use(middleware);
 
 handler.get(async (req, res) => {
-
     let doc = await req.db.collection('sliderRow').find({}).toArray();
     res.json(doc);
 });

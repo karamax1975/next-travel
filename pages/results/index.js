@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 
 import config from './../../config.json';
-import {_getDataFromAPI} from '../../inc/getData'
+import {_getDataFromAPI} from '../../lib/client/getData'
 import { MainLayout } from "../../layout/MainLayout";
 import Loader from '../../components/loaderResult';
 import ToursList from '../../components/torursList/toursList';

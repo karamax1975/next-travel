@@ -5,6 +5,7 @@ const handler = nextConnect();
 
 handler.use(middleware);
 
+
 handler.get(async (req, res) => {
 
     let doc = await req.db.collection('type').find({}).toArray();
@@ -12,3 +13,5 @@ handler.get(async (req, res) => {
 });
 
 export default handler;
+
+

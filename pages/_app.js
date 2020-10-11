@@ -3,7 +3,7 @@ import '../style/bootstrap-grid.min_.css';
 import '../style/style.scss';
 import 'slick-carousel/slick/slick.css';
 import { Provider } from "react-redux";
-import {createStore} from 'redux';
+import { createStore } from 'redux';
 
 
 import combineReducers from '../reducers/rootReducer';
@@ -15,6 +15,6 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <Component {...pageProps} />
-      </Provider>
+    </Provider>
   );
 }

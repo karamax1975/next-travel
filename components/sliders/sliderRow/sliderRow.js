@@ -2,7 +2,7 @@ import Slider from "react-slick";
 import { useEffect, useRef, useState } from 'react';
 import Link from "next/link";
 
-import {_getDataFromAPI} from '../../../inc/getData';
+import {_getDataFromAPI} from '../../../lib/client/getData';
 import config from '../../../config.json'
 
 export default function SliderRow({ titleSection }) {
