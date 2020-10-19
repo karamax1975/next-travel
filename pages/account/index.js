@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 
 export default function Account() {
 
-  const [data, setData]=useState('')
+  const [data, setData] = useState('')
 
-  async function LogIn (nameUser, loginUser){
-    const req= await fetch('/api/post',{
+  async function LogIn(nameUser, loginUser) {
+    const req = await fetch('/api/post', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -20,12 +20,10 @@ export default function Account() {
 
 
 
-  useEffect(()=>{
-    LogIn('Maxi', "dfdsfdsds").then(data=>{
-      data.text().then(data=>{
-        setData(data);
-      });
-    })
+  useEffect(() => {
+    LogIn('Maxi', "dfdsfdsds")
+      .then(data => data.text())
+      .then(data => setData(data));
   }, [])
 
 

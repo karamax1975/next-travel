@@ -8,6 +8,9 @@ $gray2:#4F4F4F;
 $gray4:#BDBDBD;
 $gray5:#E0E0E0;
 $gray6: #F2F2F2;
+$host: #fafafa;
+$host2:#F5F5F5;
+$hostGradient:linear-gradient(-270deg, $host 0%, $host2 100%);
 
 body {
   font-family: "Source Sans Pro", sans-serif;
@@ -47,7 +50,26 @@ input::placeholder{
   font-family: "Source Sans Pro", sans-serif;
 }
 
+// ================== button =================
+.LoadMore{
+  margin: 0 auto;
+  display: block;
+  background: $white;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 300;
+  color: $black;
+}
+.LoadMore:hover{
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  color: $red;
+  transition: all .2s;
+}
 
+
+
+
+// =======================
 .headerAccount {
   display: flex;
   align-items: center;
@@ -282,7 +304,7 @@ input::placeholder{
 .indexSliderPreloader{
   width: 100%;
   height: 500px;
-  background: #F5F5F5;
+  background: $host;
   position: relative;
   top: 0;
 }
@@ -290,7 +312,7 @@ input::placeholder{
   position: absolute;
   width: 40%;
   height: 100%;
-  background: linear-gradient(270deg, #F5F5F5 0%, #EEEEEE 100%);
+  background: $hostGradient;
   content: '';
   top: 0;
   left: 80%;
@@ -425,11 +447,11 @@ input::placeholder{
   justify-content: space-between;
   // --------------
   .adressSocial{
-    li:first-child{
-      padding-top: 0;
-    }
-    li{
-      padding: 7px 0;
+  li{
+    padding: 7px 0;
+  }
+    li:first-child, li:last-child{
+      padding: 0;
     }
   }
   // ----------
@@ -441,14 +463,39 @@ input::placeholder{
       color:$black;
     }
     .contact_phone{
+      display: flex;
+      align-items: center;
       h6{
         font-weight: 600;
         color: $red;
-        padding-top: 5px;
+        padding-top: 3px;
+        border-bottom: solid 1px $white;
+        display: inline-flex;
+      }
+      h6:hover{
+        border-color: $red;
+      }
+      .contact_phone_icon{
+        width: 34px;
+        height: 34px;
+        background: $red;
+        border-radius: 2px;
+        position: relative;
+        margin-right: 8px;
+        flex-shrink: 0;
+        svg{
+          width: 16px;
+          height: 16px;
+          fill:$white;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
       }
     }
     .city-name{
-      padding-top: 5px;
+      padding-top: 3px;
       cursor: pointer;
       span{
         color: $red;
@@ -547,7 +594,6 @@ input::placeholder{
     flex: 1 0 0;
     height: 50%;
     align-items: center;
-    // width: 100%;
   }
 
   .input {
@@ -586,6 +632,7 @@ input::placeholder{
       }
     }
   }
+
   .input.selected{
     border-bottom: solid 2px $red;
   }
@@ -596,6 +643,7 @@ input::placeholder{
     position: relative;
     flex: 1;
     margin: 0 3px;
+
 
     .list-dropDown{
       position: absolute;
@@ -624,6 +672,7 @@ input::placeholder{
 
 
   }
+
   .list-dropDown.no-scroll{
     overflow: hidden;
   }
@@ -759,21 +808,22 @@ input::placeholder{
 .tour-list{
   display: flex;
   flex-wrap: wrap;
-  margin-right: calc(var(--bs-gutter-x)/ -2);
-  margin-left: calc(var(--bs-gutter-x)/ -2);
+  margin-right: -15px;
+  margin-left: -15px;
 
-  .card-wrapper{
+  .card-wrapper {
     flex: 0 0 auto;
-    width: calc(100% / 3);
     margin-bottom: 30px;
     padding-left: 15px;
     padding-right: 15px;
+    width: 329px;
   }
+
   .tour-card{
     border-radius: 2px;
     overflow: hidden;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    // margin-bottom: 30px;
+    background: $white;
     .img_wrapper{
       height: 120px;
       overflow: hidden;
@@ -890,7 +940,7 @@ input::placeholder{
   .hostCard{
     border-radius: 2px;
     .hostImg{
-      background: #F5F5F5;
+      background: $host;
       width: 100%;
       height: 150px;
       position: relative;
@@ -902,7 +952,7 @@ input::placeholder{
       top: 0;
       width: 50%;
       height: 100%;
-      background: linear-gradient(-270deg, #F5F5F5 0%, #EEEEEE 100%);
+      background: $hostGradient;
       animation-name: host;
       animation-timing-function:linear;
       animation-iteration-count: infinite;
@@ -957,6 +1007,75 @@ input::placeholder{
     }
   }
 // ================================== SliderRow ===================================
+
+// --------------- Loader
+.LoaderRow{
+  padding: 30px 0;
+  margin-left: -15px;
+  margin-right: -15px;
+  .list_host{
+    width: 100%;
+    display: flex;
+    .host_item{
+      padding: 0 15px;
+      width: 50%;
+      .host_item__wrapper{
+        width: 100%;
+        height: 140px;
+        display: flex;
+        border: solid 1px $gray6;
+        border-radius: 2px;
+        overflow: hidden;
+        .host_img{
+          width: 217px;
+          height: 100%;
+          background: $host;
+          position: relative;
+        }
+        
+        .host_body{
+          flex-grow: 1;
+          padding: 30px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          .host_line{
+            height: 15px;
+            background: $host;
+            width: 50%;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+          }
+          .host_line::before{
+            animation-name: hostText;
+            animation-timing-function:linear;
+            animation-iteration-count: infinite;
+            animation-duration: 2s;
+            content: '';
+            position: absolute;
+            background: $hostGradient;
+            top: 0;
+            width: 50%;
+            height: 100%;
+          }
+          @keyframes hostText{
+            from{
+              left: -100%;
+            }
+            to{
+              left: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.SliderRow{
+  padding-bottom: 30px;
+}
 .section-title{
   padding-top: 30px;
   padding-bottom: 15px;
@@ -996,6 +1115,8 @@ input::placeholder{
     right: 0;
     
   }
+
+   
   .PrevArrow, .NextArrow{
     position: absolute;
     width: 35px;
@@ -1017,16 +1138,10 @@ input::placeholder{
       transform: translate(0, -50%);
     }
   }
-  .PrevArrow{
-    right: -40px;
-    svg{
-      right: 10px;
-      
-    }
-  }
   .PrevArrow:hover, .NextArrow:hover{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+  
     svg{
       stroke: $red;
     }
@@ -1037,6 +1152,13 @@ input::placeholder{
       left: 10px;
     }
   }
+  .PrevArrow{
+    right: -40px;
+    svg{
+      right: 10px;
+      
+    }
+  } 
   .sliderRow-item_wrapper{
     padding: 0 15px;
       a{
@@ -1045,8 +1167,8 @@ input::placeholder{
         font-weight: 500;
       }
       a:hover{
-        border-bottom: solid 1px $gray4;
-        color: $gray4;
+        border-bottom: solid 1px $red;
+        color: $red;
       }
       p{
         font-size: 16px;
@@ -1085,12 +1207,135 @@ input::placeholder{
         h6{
           color: $gray2;
         }
-  
       }
     }
 
   }
-
+  .slick-dots{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    li{
+      padding: 0 15px;
+      cursor: pointer;
+    }
+    span{
+      background: $gray4;
+      display: block;
+      height: 2px;
+      width: 30px;
+      
+    }
+    .slick-active span{
+      background: $red;
+    }
+  }
 }
-// =========================================================
+// ================================= PopularOffers ======================
+.popularOffers{
+  background: $gray6;
+}
+.sliderOffers{
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 30px;
+  .offerItem{
+    padding: 30px 15px;
+    h3{
+      font-size: 20px;
+      line-height: 120%;
+      text-align: center;
+      padding:20px 15px 0 15px;
+      font-weight: 400;
+    }
+    .offerItem_card{
+      background: $white;
+      border-radius: 2px;
+      height: 190px;
+      position: relative;
+        .offerItem_card-imgWrapper{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          background: $white;
+        }
+            
+    }
+    .offerItem_card::after{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 0;
+      background: $red;
+      bottom: 0;
+    }
+    
+  }
+  .offerItem:hover{
+    .offerItem_card{
+      cursor: pointer;
+      transition: all .3s;
+      transform: scale(1.05, 1.05);
+      filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.1));
+    }
+  }
+  .offerItem.active {
+    h3{
+      color: $red;
+    }
+    .offerItem_card{
+      cursor: pointer;
+      transition: all .3s;
+      transform: scale(1.05, 1.05);
+      filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.1));
+    }
+    .offerItem_card::after{
+      height: 2%;
+      transition: all .1s;
+    }
+  }
+
+  .PrevArrow, .NextArrow{
+    position: absolute;
+    top: 92px;
+    width: 35px;
+    height: 35px;
+    z-index: 11;
+    background: $white;
+    border-radius: 2px;
+    svg{
+      stroke: $gray4;
+      stroke-width: 3;
+      fill: none;
+      width: 10px;
+      height: 14px;
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+  .NextArrow{
+    left: -40px;
+    svg{
+      left: 11px;
+    }
+  }
+  .PrevArrow{
+    right: -40px;
+    svg{
+      right: 11px;
+    }
+  }
+  .NextArrow:hover, .PrevArrow:hover{
+    cursor: pointer;
+    svg{
+      stroke: $red;
+    }
+  } 
+}
+
+
 

@@ -1,6 +1,6 @@
 import config from './../../config.json'
 import TourCard from '../tourCard/tourCard'
-export default function ToursList({ tours=[], adults=config.adults, child=config.child }) {
+export default function ToursList({tours=[], adults=config.adults, child=config.child }) {
 
 
   

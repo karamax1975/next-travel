@@ -7,10 +7,14 @@ import ReactDOM from 'react-dom';
 
 import WigetFindTours from '../components/wiget_findTours/index';
 import SlideRow from '../components/sliders/sliderRow/sliderRow';
+import PopularOffers from '../components/popularOffers/index';
+
+
 
 
 
 export default function Index() {
+
 
   // ---- Серверный код
   // if (!process.browser) {
@@ -23,7 +27,8 @@ export default function Index() {
     <IndexLayout title={'Index'}>
       <WigetFindTours />
       <SlideRow titleSection={'Туда, где всегда тепло'} />
-
+      <PopularOffers titleSection={'Популярные предложения'}/>
     </IndexLayout>
   );
 }
+

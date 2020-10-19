@@ -153,6 +153,34 @@
       "start":"2020-04-01",
       "end":"2024-01-01",
       "tags":"Семейный отдых"
+    },
+    { 
+      "activity":true,
+      "country": "Австралия",
+      "town": "Аделайда",
+      "type":"Круиз",
+      "price": "260000",
+      "duration": "15",
+      "number": "2",
+      "description": "",
+      "imgUrl": "/upload/princess_in_venice.jpg",
+      "start":"2020-04-01",
+      "end":"2024-01-01",
+      "tags":""
+    },
+    { 
+      "activity":true,
+      "country": "Таиланд",
+      "town": "Паттайя",
+      "type":"Новогодний тур",
+      "price": "77000",
+      "duration": "4",
+      "number": "2",
+      "description": "",
+      "imgUrl": "/upload/Patay.jpg",
+      "start":"2020-04-01",
+      "end":"2024-01-01",
+      "tags":"Все включено"
     }
   ],
   "indexSlider":[
@@ -211,20 +239,37 @@
       "duration":"на двоих, 14 ночей",
       "prise":"от 320 000 рублей"
     }
+    
   ],
 
   "type":[
     {
-      "type":"Автобусные туры"
+      "type":"Автобусные туры",
+      "img":"iconBus.svg"
     },
     {
-      "type":"Горнолыжные туры"
+      "type":"Горнолыжные туры",
+      "img":"iconMountains.svg"
     },
     {
-      "type":"Пляжный отдых"
+      "type":"Пляжный отдых",
+      "img":"iconBeach.svg"
     },
     {
-      "type":"Экскурсионные туры"
+      "type":"Экскурсионные туры",
+      "img":"iconExcursion.svg"
+    },
+    {
+      "type":"Круизы",
+      "img":"iconCruises.svg"
+    },
+    {
+      "type":"Новогодние туры",
+      "img":"iconChristmas.svg"
+    },
+    {
+      "type":"Тематические туры",
+      "img":"iconChristmas.svg"
     }
   ],
   "country":[
@@ -248,6 +293,21 @@
     },
     {
       "country":"США"
+    },
+    {
+      "country":"Тайланд"
+    },
+    {
+      "country":"Французская Полинезия"
+    },
+    {
+      "country":"Сингапур"
+    },
+    {
+      "country":"Австралия"
+    },
+    {
+      "country":"Куба"
     }
   ]
 }

@@ -22,10 +22,7 @@ handler.post((req, res) => {
           const findUser = data.some(user => user.name == req.body.name);
           if (!findUser) {
             return null
-            // try {
-            //   collection.insertOne(req.body);
-            //   return 'User create in database'
-            // } catch (e) { return e }
+
           }
           else return `Welcome ${req.body.name}`
         }).then(message => {

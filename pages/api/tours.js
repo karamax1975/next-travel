@@ -1,15 +1,37 @@
 import nextConnect from 'next-connect';
-import middleware from '../../database';
+import Mongo from 'mongodb';
 
-const handler = nextConnect();
+import config from '../../config.json'
 
-handler.use(middleware);
 
-handler.get(async (req, res) => {
+const Client = Mongo.MongoClient;
+const connect = nextConnect();
 
-    let tours = await req.db.collection('tours').find({}).toArray();
-    const sort =tours.sort((a,b)=>a.id-b.id);
-    res.json(sort);
-});
 
-export default handler;
+const mongoClient = new Client(config.db,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+connect.get((req, res) => {
+  mongoClient.connect((err, client) => {
+    if (!err) {
+      const db = client.db(config.collection);
+      const collection = db.collection(`${config.API[0]}`);
+      collection.find({}).toArray()
+        .then(data => {
+          res.send(data);
+          res.end();
+        })
+    }
+    else console.log(err)
+  })
+
+})
+
+
+
+
+
+export default connect

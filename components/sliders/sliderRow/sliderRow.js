@@ -2,20 +2,17 @@ import Slider from "react-slick";
 import { useEffect, useRef, useState } from 'react';
 import Link from "next/link";
 
-import {_getDataFromAPI} from '../../../lib/client/getData';
-import config from '../../../config.json'
+import { _getDataFromAPI } from '../../../lib/client/getData';
+import config from '../../../config.json';
+import Loader from './loader';
 
 export default function SliderRow({ titleSection }) {
   const [arraySlide, setArraySlide] = useState([])
   const slideRef = useRef();
 
-  const {sliders}=config;
+  const { sliders } = config;
 
   useEffect(() => {
-    // async function getSlide() {
-    //   const response = await fetch('api/sliderRow');
-    //   return await response.json()
-    // }
     _getDataFromAPI(sliders[0]).then(data => {
       setArraySlide(data);
     })
@@ -23,7 +20,7 @@ export default function SliderRow({ titleSection }) {
 
 
   const settings = {
-    // dots: true,
+    dots: true,
     className: "slideShowRow",
     touchMove: true,
     prevArrow: <PrevArrow />,
@@ -34,6 +31,12 @@ export default function SliderRow({ titleSection }) {
     speed: 1000,
     autoplay: true,
     infinite: true,
+    appendDots: dots => (
+      <ul> {dots} </ul>
+    ),
+    customPaging: () => (
+      <span></span>
+    )
   }
 
 
@@ -62,45 +65,41 @@ export default function SliderRow({ titleSection }) {
     );
   }
 
-  const Loader = () => {
-    return (
-      <div>Loader</div>
-    )
-  }
+
 
   return (
     <div className="SliderRow container">
       <div className="row">
         <div className="col">
           <h5 className="section-title">{titleSection}</h5>
-          {arraySlide.length>0
-          ?<Slider {...settings} ref={slideRef}>
-          {arraySlide.map(item => {
-            return (
-              <div className="sliderRow-item_wrapper" key={item._id}>
-                <div className="sliderRow-item">
-                  <div className="sliderRow-item_img">
-                    <img src={item.imgUrl} alt="" />
-                  </div>
-                  <div className="sliderRow-item_description">
-                    <div className="description_title">
-                      <Link href={`/tour/[id]`} as={`/tour/${item.link}`}>
-                        <a>{item.title}</a>
-                      </Link>
-                      {/* <span>{item.description}</span> */}
+          {arraySlide.length > 0
+            ? <Slider {...settings} ref={slideRef}>
+              {arraySlide.map(item => {
+                return (
+                  <div className="sliderRow-item_wrapper" key={item._id}>
+                    <div className="sliderRow-item">
+                      <div className="sliderRow-item_img">
+                        <img src={item.imgUrl} alt="" />
+                      </div>
+                      <div className="sliderRow-item_description">
+                        <div className="description_title">
+                          <Link href={`/tour/[id]`} as={`/tour/${item.link}`}>
+                            <a>{item.title}</a>
+                          </Link>
+                          {/* <span>{item.description}</span> */}
+                        </div>
+                        <div className="description_prise-info">
+                          <span>{item.duration}</span>
+                          <p>{item.prise}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="description_prise-info">
-                      <span>{item.duration}</span>
-                      <p>{item.prise}</p>
-                    </div>
                   </div>
-                </div>
-              </div>
-            )
-          })}
-        </Slider>
-          :<Loader/>
-        }
+                )
+              })}
+            </Slider>
+            : <Loader/>
+          }
         </div>
       </div>
     </div>

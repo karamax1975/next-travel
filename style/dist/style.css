@@ -40,6 +40,22 @@ input::placeholder {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+.LoadMore {
+  margin: 0 auto;
+  display: block;
+  background: #ffffff;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #222222;
+}
+
+.LoadMore:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  color: #E42B27;
+  transition: all 0.2s;
+}
+
 .headerAccount {
   display: flex;
   align-items: center;
@@ -247,7 +263,7 @@ input::placeholder {
 .indexSliderPreloader {
   width: 100%;
   height: 500px;
-  background: #F5F5F5;
+  background: #fafafa;
   position: relative;
   top: 0;
 }
@@ -256,7 +272,7 @@ input::placeholder {
   position: absolute;
   width: 40%;
   height: 100%;
-  background: linear-gradient(270deg, #F5F5F5 0%, #EEEEEE 100%);
+  background: linear-gradient(-270deg, #fafafa 0%, #F5F5F5 100%);
   content: "";
   top: 0;
   left: 80%;
@@ -381,11 +397,11 @@ input::placeholder {
   display: flex;
   justify-content: space-between;
 }
-.getUserCity .adressSocial li:first-child {
-  padding-top: 0;
-}
 .getUserCity .adressSocial li {
   padding: 7px 0;
+}
+.getUserCity .adressSocial li:first-child, .getUserCity .adressSocial li:last-child {
+  padding: 0;
 }
 .getUserCity .contact {
   display: flex;
@@ -395,13 +411,40 @@ input::placeholder {
 .getUserCity .contact .city-title {
   color: #222222;
 }
+.getUserCity .contact .contact_phone {
+  display: flex;
+  align-items: center;
+}
 .getUserCity .contact .contact_phone h6 {
   font-weight: 600;
   color: #E42B27;
-  padding-top: 5px;
+  padding-top: 3px;
+  border-bottom: solid 1px #ffffff;
+  display: inline-flex;
+}
+.getUserCity .contact .contact_phone h6:hover {
+  border-color: #E42B27;
+}
+.getUserCity .contact .contact_phone .contact_phone_icon {
+  width: 34px;
+  height: 34px;
+  background: #E42B27;
+  border-radius: 2px;
+  position: relative;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+.getUserCity .contact .contact_phone .contact_phone_icon svg {
+  width: 16px;
+  height: 16px;
+  fill: #ffffff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .getUserCity .contact .city-name {
-  padding-top: 5px;
+  padding-top: 3px;
   cursor: pointer;
 }
 .getUserCity .contact .city-name span {
@@ -695,20 +738,21 @@ input::placeholder {
 .tour-list {
   display: flex;
   flex-wrap: wrap;
-  margin-right: calc(var(--bs-gutter-x)/ -2);
-  margin-left: calc(var(--bs-gutter-x)/ -2);
+  margin-right: -15px;
+  margin-left: -15px;
 }
 .tour-list .card-wrapper {
   flex: 0 0 auto;
-  width: calc(100% / 3);
   margin-bottom: 30px;
   padding-left: 15px;
   padding-right: 15px;
+  width: 329px;
 }
 .tour-list .tour-card {
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
 }
 .tour-list .tour-card .img_wrapper {
   height: 120px;
@@ -816,7 +860,7 @@ input::placeholder {
   border-radius: 2px;
 }
 .hostCard .hostImg {
-  background: #F5F5F5;
+  background: #fafafa;
   width: 100%;
   height: 150px;
   position: relative;
@@ -828,7 +872,7 @@ input::placeholder {
   top: 0;
   width: 50%;
   height: 100%;
-  background: linear-gradient(-270deg, #F5F5F5 0%, #EEEEEE 100%);
+  background: linear-gradient(-270deg, #fafafa 0%, #F5F5F5 100%);
   animation-name: host;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -881,6 +925,73 @@ input::placeholder {
     left: 168%;
   }
 }
+.LoaderRow {
+  padding: 30px 0;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.LoaderRow .list_host {
+  width: 100%;
+  display: flex;
+}
+.LoaderRow .list_host .host_item {
+  padding: 0 15px;
+  width: 50%;
+}
+.LoaderRow .list_host .host_item .host_item__wrapper {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  border: solid 1px #F2F2F2;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.LoaderRow .list_host .host_item .host_item__wrapper .host_img {
+  width: 217px;
+  height: 100%;
+  background: #fafafa;
+  position: relative;
+}
+.LoaderRow .list_host .host_item .host_item__wrapper .host_body {
+  flex-grow: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.LoaderRow .list_host .host_item .host_item__wrapper .host_body .host_line {
+  height: 15px;
+  background: #fafafa;
+  width: 50%;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.LoaderRow .list_host .host_item .host_item__wrapper .host_body .host_line::before {
+  animation-name: hostText;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  content: "";
+  position: absolute;
+  background: linear-gradient(-270deg, #fafafa 0%, #F5F5F5 100%);
+  top: 0;
+  width: 50%;
+  height: 100%;
+}
+@keyframes hostText {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+.SliderRow {
+  padding-bottom: 30px;
+}
+
 .section-title {
   padding-top: 30px;
   padding-bottom: 15px;
@@ -940,12 +1051,6 @@ input::placeholder {
   top: 50%;
   transform: translate(0, -50%);
 }
-.slideShowRow .PrevArrow {
-  right: -40px;
-}
-.slideShowRow .PrevArrow svg {
-  right: 10px;
-}
 .slideShowRow .PrevArrow:hover, .slideShowRow .NextArrow:hover {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -959,6 +1064,12 @@ input::placeholder {
 .slideShowRow .NextArrow svg {
   left: 10px;
 }
+.slideShowRow .PrevArrow {
+  right: -40px;
+}
+.slideShowRow .PrevArrow svg {
+  right: 10px;
+}
 .slideShowRow .sliderRow-item_wrapper {
   padding: 0 15px;
 }
@@ -968,8 +1079,8 @@ input::placeholder {
   font-weight: 500;
 }
 .slideShowRow .sliderRow-item_wrapper a:hover {
-  border-bottom: solid 1px #BDBDBD;
-  color: #BDBDBD;
+  border-bottom: solid 1px #E42B27;
+  color: #E42B27;
 }
 .slideShowRow .sliderRow-item_wrapper p {
   font-size: 16px;
@@ -1007,4 +1118,121 @@ input::placeholder {
 }
 .slideShowRow .sliderRow-item_wrapper .sliderRow-item .sliderRow-item_description h6 {
   color: #4F4F4F;
+}
+.slideShowRow .slick-dots {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+}
+.slideShowRow .slick-dots li {
+  padding: 0 15px;
+  cursor: pointer;
+}
+.slideShowRow .slick-dots span {
+  background: #BDBDBD;
+  display: block;
+  height: 2px;
+  width: 30px;
+}
+.slideShowRow .slick-dots .slick-active span {
+  background: #E42B27;
+}
+
+.popularOffers {
+  background: #F2F2F2;
+}
+
+.sliderOffers {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 30px;
+}
+.sliderOffers .offerItem {
+  padding: 30px 15px;
+}
+.sliderOffers .offerItem h3 {
+  font-size: 20px;
+  line-height: 120%;
+  text-align: center;
+  padding: 20px 15px 0 15px;
+  font-weight: 400;
+}
+.sliderOffers .offerItem .offerItem_card {
+  background: #ffffff;
+  border-radius: 2px;
+  height: 190px;
+  position: relative;
+}
+.sliderOffers .offerItem .offerItem_card .offerItem_card-imgWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: #ffffff;
+}
+.sliderOffers .offerItem .offerItem_card::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0;
+  background: #E42B27;
+  bottom: 0;
+}
+.sliderOffers .offerItem:hover .offerItem_card {
+  cursor: pointer;
+  transition: all 0.3s;
+  transform: scale(1.05, 1.05);
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.1));
+}
+.sliderOffers .offerItem.active h3 {
+  color: #E42B27;
+}
+.sliderOffers .offerItem.active .offerItem_card {
+  cursor: pointer;
+  transition: all 0.3s;
+  transform: scale(1.05, 1.05);
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.1));
+}
+.sliderOffers .offerItem.active .offerItem_card::after {
+  height: 2%;
+  transition: all 0.1s;
+}
+.sliderOffers .PrevArrow, .sliderOffers .NextArrow {
+  position: absolute;
+  top: 92px;
+  width: 35px;
+  height: 35px;
+  z-index: 11;
+  background: #ffffff;
+  border-radius: 2px;
+}
+.sliderOffers .PrevArrow svg, .sliderOffers .NextArrow svg {
+  stroke: #BDBDBD;
+  stroke-width: 3;
+  fill: none;
+  width: 10px;
+  height: 14px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.sliderOffers .NextArrow {
+  left: -40px;
+}
+.sliderOffers .NextArrow svg {
+  left: 11px;
+}
+.sliderOffers .PrevArrow {
+  right: -40px;
+}
+.sliderOffers .PrevArrow svg {
+  right: 11px;
+}
+.sliderOffers .NextArrow:hover, .sliderOffers .PrevArrow:hover {
+  cursor: pointer;
+}
+.sliderOffers .NextArrow:hover svg, .sliderOffers .PrevArrow:hover svg {
+  stroke: #E42B27;
 }

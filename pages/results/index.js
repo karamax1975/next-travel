@@ -96,7 +96,7 @@ export default function Result() {
               tag={tags}
             />
             {!load 
-              ?<Loader />
+              ?<Loader/>
               :''
             }
             {!findTour&&load

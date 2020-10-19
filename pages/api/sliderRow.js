@@ -1,13 +1,37 @@
 import nextConnect from 'next-connect';
-import middleware from '../../database';
+import Mongo from 'mongodb';
 
-const handler = nextConnect();
+import config from '../../config.json'
 
-handler.use(middleware);
 
-handler.get(async (req, res) => {
-    let doc = await req.db.collection('sliderRow').find({}).toArray();
-    res.json(doc);
-});
+const Client = Mongo.MongoClient;
+const connect = nextConnect();
 
-export default handler;
+
+const mongoClient = new Client(config.db,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+connect.get((req, res) => {
+  mongoClient.connect((err, client) => {
+    if (!err) {
+      const db = client.db(config.collection);
+      const collection = db.collection(`${config.sliders[0]}`);
+      collection.find({}).toArray()
+        .then(data => {
+          res.send(data);
+          res.end();
+        })
+    }
+    else console.log(err)
+  })
+
+})
+
+
+
+
+
+export default connect

@@ -12,7 +12,7 @@ export default function tourCard({tour, adults=config.adults, child=config.child
     const priceOut = prise.replace(reg, ' ') // вывод цены за поездку
 
     return (
-        <div className='card-wrapper'>
+        <div className={`card-wrapper`}>
             <Link href={`/tour/[id]`} as={`/tour/${tour._id}`}>
                 <a>
                     <div className="tour-card" >

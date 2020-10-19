@@ -3,45 +3,54 @@ import resizeContainer from './resizeContainer';
 
 
 import UserCity from '../header/userCity'
-import {Fb_gray, Instagram, Vk} from '../socialIcons/linkSocial_Icons';
+import { Fb_gray, Instagram, Vk } from '../socialIcons/linkSocial_Icons';
 
-export default function indexUser(){
-    const [posRight, setPosRight] = useState(0);
+export default function indexUser() {
+  const [posRight, setPosRight] = useState(0);
 
-    useEffect(() => { 
-        const bodyWidth = document.body.clientWidth;
-        setPosRight(Math.round(Number(bodyWidth - resizeContainer(bodyWidth)) / 2 ))
-    },[])
+  useEffect(() => {
+    const bodyWidth = document.body.clientWidth;
+    setPosRight(Math.round(Number(bodyWidth - resizeContainer(bodyWidth)) / 2))
+  }, [])
 
 
-    function resizeRight(){
-        const bodyWidth = document.body.clientWidth;
-        setPosRight(Math.round(Number(bodyWidth - resizeContainer(bodyWidth)) / 2 ))
+  function resizeRight() {
+    const bodyWidth = document.body.clientWidth;
+    setPosRight(Math.round(Number(bodyWidth - resizeContainer(bodyWidth)) / 2))
+  }
+
+  useEffect(() => {
+    window.addEventListener(`resize`, resizeRight)
+    return () => {
+      window.removeEventListener('resize', resizeRight)
     }
-
-    useEffect(()=>{
-        window.addEventListener(`resize`, resizeRight)
-        return ()=>{
-            window.removeEventListener('resize',resizeRight)
-        }
-    },[posRight])
+  }, [posRight])
 
 
-    return (
-        <div className="getUserCity" style={{right:`${posRight}px`}}>
-            <div className="contact">
-                <UserCity/>
-                <div className="contact_phone" >
-                    <span>Бесплатная горячая линия:</span>
-                    <a href="tel:+788006000001"><h6 >+7 8 800 600 00 01</h6></a>
-                </div>
-            </div>
-            
-            <ul className="adressSocial">
-                <li><Fb_gray color={'gray'}/></li>
-                <li><Instagram color={'gray'}/></li>
-                <li><Vk color={'gray'}/></li>
-            </ul>
+  return (
+    <div className="getUserCity" style={{ right: `${posRight}px` }} >
+      <div className="contact" >
+        <UserCity />
+        <div className="contact_phone" >
+          <div className="contact_phone_icon" >
+            <svg viewBox="0 0 16 17" >
+              <path fillRule="evenodd" clipRule="evenodd" d="M8.90607 1.37842C8.85541 1.37066 8.79457 1.36622 8.7303 1.36159L8.73015 1.36157C8.46404 1.34216 7.91064 1.3018 7.9434 0.729652C7.95762 0.48204 8.06872 0.0666656 8.65312 0.0666656C8.71833 0.0666656 8.78267 0.0710496 8.83966 0.0749335L8.84261 0.0751344L8.84958 0.0756065L8.84959 0.0756072C8.89473 0.0786637 8.93715 0.0815364 8.97196 0.0815364C8.99485 0.0815364 9.0082 0.0802258 9.01541 0.0791672C9.03008 0.0771004 9.0446 0.0762938 9.05982 0.076798C12.7295 0.200654 15.9088 3.53126 15.8635 7.2042C15.8629 7.25256 15.8653 7.30767 15.8679 7.36619L15.8679 7.36631L15.8681 7.36959C15.8791 7.61327 15.8927 7.91649 15.6975 8.12059C15.5857 8.23765 15.4293 8.29693 15.2327 8.29693L15.2133 8.29673C14.5865 8.28463 14.5771 7.70115 14.5726 7.42051L14.5726 7.42035C14.5713 7.34151 14.5701 7.26706 14.5624 7.20601C14.1082 3.61474 12.4695 1.92642 8.90607 1.37842ZM9.39306 2.20149C11.8083 2.4916 13.7575 4.58954 13.738 6.87803C13.7379 6.88857 13.7372 6.8991 13.7356 6.90959C13.7301 6.95108 13.7322 7.01341 13.7345 7.07935V7.07936L13.7345 7.08002C13.7425 7.31503 13.7593 7.80415 13.2236 7.88557C13.17 7.89373 13.1186 7.89787 13.0707 7.89787H13.0706C12.4954 7.89787 12.4629 7.36277 12.4473 7.10558L12.4473 7.10509L12.4473 7.10502C12.4431 7.03652 12.4392 6.97195 12.4305 6.91952C12.0734 4.76794 11.3427 4.0056 9.17267 3.52071C9.12042 3.50897 9.05827 3.50039 8.99232 3.49129L8.98706 3.49056C8.75538 3.45886 8.46694 3.41929 8.303 3.19637C8.20556 3.06385 8.17325 2.89452 8.20713 2.69288C8.24196 2.4855 8.37428 2.13778 8.86931 2.13778C8.99407 2.13778 9.11772 2.15814 9.2373 2.17795L9.23766 2.17801L9.23769 2.17802L9.23775 2.17803C9.29298 2.18717 9.34515 2.19581 9.39306 2.20149ZM14.3901 11.8475C14.3143 11.7897 14.236 11.7298 14.1626 11.6707C13.7737 11.3577 13.3599 11.0692 12.9597 10.7902L12.9597 10.7902L12.9593 10.7899C12.8763 10.732 12.7932 10.6741 12.7104 10.616C12.1976 10.2559 11.7367 10.0808 11.3011 10.0808C10.7145 10.0808 10.203 10.405 9.78092 11.0441C9.5939 11.3275 9.36701 11.4652 9.08739 11.4652C8.92204 11.4652 8.73417 11.4181 8.52905 11.325C6.87395 10.5744 5.6921 9.42365 5.01626 7.90466C4.68956 7.1705 4.79547 6.6906 5.37044 6.30003C5.69694 6.07843 6.30468 5.66588 6.26163 4.87586C6.21288 3.97872 4.23341 1.27934 3.39938 0.972753C3.04626 0.842898 2.67525 0.841688 2.29466 0.969728C1.33587 1.29205 0.647828 1.85809 0.304741 2.60658C-0.0268021 3.3298 -0.0118304 4.179 0.348043 5.06238C1.38839 7.61642 2.85108 9.84321 4.69561 11.6808C6.50108 13.4796 8.72015 14.9531 11.2911 16.0601C11.5229 16.1598 11.7659 16.2142 11.9434 16.2539L11.9563 16.2568C12.0113 16.2692 12.0589 16.2798 12.0942 16.2895C12.1151 16.2952 12.1367 16.2983 12.1583 16.2985L12.1786 16.2986H12.1787C13.388 16.2986 14.8399 15.1936 15.2858 13.9339C15.6765 12.8308 14.9632 12.2856 14.3901 11.8475ZM9.26694 4.27879L9.26726 4.27878C9.81607 4.26553 10.4194 4.5518 10.9199 5.06013C11.4187 5.5669 11.712 6.20312 11.7056 6.76352C11.7233 7.30048 11.5275 7.59714 11.1237 7.64518C11.0985 7.64826 11.0731 7.64972 11.0483 7.64972H11.0483C10.7126 7.64972 10.4511 7.37857 10.4124 6.99026C10.329 6.1575 9.91245 5.70895 9.10131 5.57879C8.87765 5.54275 8.63175 5.47707 8.5034 5.26273C8.41594 5.11664 8.40748 4.93859 8.4782 4.73353C8.6293 4.29494 9.05979 4.28404 9.26694 4.27879Z" />
+            </svg>
+          </div>
+          <div className="contact_phone_text" >
+            <span > Бесплатная горячая линия: </span>
+            <a href="tel:+788006000001" >
+              < h6 > +7 8 800 600 00 01 </h6>
+            </a >
+          </div>
         </div>
-    )
+      </div>
+
+      <ul className="adressSocial" >
+        <li > < Fb_gray color={'gray'} /></li >
+        <li > < Instagram color={'gray'} /></li >
+        <li > < Vk color={'gray'}
+        /></li >
+      </ul> </div>
+  )
 }
