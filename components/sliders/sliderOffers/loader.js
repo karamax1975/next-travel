@@ -1,5 +1,12 @@
 export default function Loader (){
   return (
-    <h1>Loader</h1>
+    <div className ="sliderOffers__Loader">
+      <div className="Loader-item"></div>
+      <div className="Loader-item"></div>
+      <div className="Loader-item"></div>
+      <div className="Loader-item"></div>
+      <div className="Loader-item"></div>
+      <div className="Loader-item"></div>
+    </div>
   )
 }

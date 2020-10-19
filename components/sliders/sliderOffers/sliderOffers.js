@@ -84,7 +84,7 @@ export default function SliderOffers() {
         ? <Slider {...settings} ref={slideRef}>
           {offerItem}
         </Slider>
-        : <Loader />
+        : <Loader/>
       }
     </>
   )
