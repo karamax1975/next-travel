@@ -12,8 +12,14 @@ $host: #fafafa;
 $host2:#F5F5F5;
 $hostGradient:linear-gradient(-270deg, $host 0%, $host2 100%);
 
+
+$mobile:500px;
+
+
 body {
   font-family: "Source Sans Pro", sans-serif;
+  position: relative;
+  // box-sizing:border-box;
 }
 a {
   text-decoration: none;
@@ -21,14 +27,37 @@ a {
 div{
   box-sizing:border-box;
 }
-
+// ========================== Buttons
 button{
   border: none;
   padding: 0;
   background: none;
 }
-
+.button__close{
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+  border: solid 1px $gray5;
+}
+.btn-big{
+  height: 54px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 2px;
+}
+.btn-big.red{
+  background: $red;
+  color: $white;
+  font-weight: 600;
+}
 // ---------------- font-size
+
+h1{
+  font-size: 50px;
+  @media screen and (max-width: $mobile) {
+    font-size: 40px;
+  }
+}
 
 h2{
   font-size: 45px;
@@ -38,6 +67,10 @@ h5{
 }
 h6{
   font-size: 20px;
+}
+p{
+  font-size: 16px;
+  line-height: 120%;
 }
 span{
   font-size: 14px;
@@ -51,6 +84,7 @@ input::placeholder{
 }
 
 // ================== button =================
+
 .LoadMore{
   margin: 0 auto;
   display: block;
@@ -68,8 +102,70 @@ input::placeholder{
 
 
 
+// ======================= inputs
 
-// =======================
+.form-textBox{
+  position: relative;
+  input{
+    width: 100%;
+    height: 56px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 0;
+    color: $black;
+    border: solid 1px $gray5;
+    border-radius: 2px;
+    box-sizing:border-box;
+    background: $white;
+    
+  }
+  span{
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translate(0, -50%);
+    font-size: 16px;
+    pointer-events:none;
+    transition: all .1s;
+  }
+}
+.form-textBox.active{
+  
+  // transition: all .2s;
+  input{
+    border-bottom: solid 1px $red;
+  }
+  span{
+    top: 14px;
+    font-size: 12px;
+    color: $gray4;
+  }
+}
+.form-textBox.alert{
+  input{
+    border-color: $red;
+  }
+  span{
+    color: $red;
+    top: 14px;
+    font-size: 12px;
+  }
+  .error-Input{
+    padding-top: 5px;
+    p{
+      color: $red ;
+      font-size: 14px;
+    }
+    
+  }
+}
+// 
+
+header{
+  border-bottom: solid 1px $gray5;
+  margin-bottom: 30px;
+}
+
 .headerAccount {
   display: flex;
   align-items: center;
@@ -84,7 +180,7 @@ input::placeholder{
     padding-left: 10px;
   }
 }
-.headerIndex, .header{
+.headerIndex, .head{
   position: relative;
   z-index: 2;
   display: flex;
@@ -837,14 +933,42 @@ input::placeholder{
       }
     }
     .card-description{  // ------------------------------------------
-      padding: 15px;
+      padding: 10px 15px 15px 15px;
       padding-bottom: 13px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      flex-wrap: wrap;
       flex-grow: 1;
       height: 150px;
+      .tagsIcon{
+        display: flex;
+        align-items: center;
+        .icon-hot{
+          background: $red;
+          width: 15px;
+          height: 15px;
+          position: relative;
+          margin-right: 5px;
+          border-radius: 1px;
+          svg{
+            position: absolute;
+            width: 7px;
+            height: 9px;
+            fill: $white;
+            left: 4px;
+            top: 3px;
+
+          }
+        }
+        span{
+          color: $red;
+          font-size: 12px;
+          line-height: 100%;
+          margin: 0;
+          font-weight: 400;
+        }
+      }
+
       h5{
         font-weight: 400;
         font-size: 18px;
@@ -891,6 +1015,13 @@ input::placeholder{
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
     img{
       transform: scale(1.2, 1.2);
+    }
+    .hotIcon{
+      svg{
+        transform: 
+        scale(1.2, 1.2)
+        rotate(-45deg);
+      }
     }
   }
 }
@@ -1252,6 +1383,8 @@ input::placeholder{
 // ---------------
 .popularOffers{
   background: $gray6;
+  padding-top: 30px;
+  padding-bottom: 60px;
 }
 .sliderOffers{
   margin-left: -15px;
@@ -1353,5 +1486,98 @@ input::placeholder{
   } 
 }
 
+// ======================= CalendarOfEvents ================
+.multiple-Title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px $gray5;
+  .section-title{
+    border-bottom: none;
+  }
+}
+.CalendarOfEvents{
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
 
+// =========================== Authorization ====================================
 
+.Authorization{
+  width: 100%;
+  h1{
+    margin: 30px 0;
+    @media screen and (max-width: $mobile) {
+      margin: 15px 0;
+    }
+  }
+  .formAuth{
+    padding-right: 200px ;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    @media screen and (max-width: $mobile) {
+      padding-right: 0;
+    }
+    .form-textBox{
+      margin-bottom: 15px;
+
+    }
+    p{
+      color: $gray2;
+      font-size: 15px;
+    }
+    button{
+      margin-top: 30px;
+    }
+  }
+  .signin-forgotpassword{
+    padding-top: 15px;
+    padding-bottom: 60px;
+    @media screen and (max-width: $mobile) {
+      padding-bottom: 30px;
+      padding-top: 0;
+    }
+    a{
+      display: block;
+      color: $red;
+      span{
+        font-size: 16px;
+        border-bottom: solid 1px $red;
+      }
+    }
+    a:not(:last-child){
+      margin-bottom: 15px
+    }
+  }
+  .authorization-support{
+    border-top: solid 1px $gray6;
+    border-bottom: solid 1px $gray6;
+    padding-top: 25px;
+    padding-bottom: 30px;
+    color:$gray2;
+    @media screen and (max-width: $mobile) {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+    h6{
+      @media screen and (max-width: $mobile) {
+        font-size: 18px;
+        // text-align: center;
+      }
+    }
+
+    a{
+      color:$red;
+      font-size:24px;
+      margin-left: 5px;
+      line-height: 100%;
+      @media screen and (max-width: $mobile) {
+        white-space:nowrap;
+        line-height: 120%;
+        display: block;
+        margin-top: 3px;
+      }
+      // border-bottom: solid 1px $red;
+    }
+  }
+}

@@ -17,6 +17,7 @@
     "react-dom": "16.13.1",
     "react-slick": "^0.27.11",
     "react-slideshow-image": "^3.2.0",
+    "redux-form": "^8.3.6",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

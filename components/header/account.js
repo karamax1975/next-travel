@@ -1,12 +1,13 @@
 import Link from "next/link";
 
-export default function HeaderAccount() {
 
+
+export default function HeaderAccount() {
 
 
   return (
     <div className="headerAccount">
-      <Link href="/account">
+      <Link href="/account" >
         <a>Личный кабинет</a>
         </Link>
       <img src="/img/index_account-icon.svg" alt="my image" />

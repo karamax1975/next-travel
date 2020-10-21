@@ -17,6 +17,13 @@
     "wigetSelectTours":[
       "country",
       "type"
-    ]
+    ],
+
+    "phone":{
+      "callcenter": "+7 8 800 600 00 01",
+      "support":"+7 8 800 600 00 01" 
+    }
+
+    
 
 }

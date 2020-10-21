@@ -25,7 +25,7 @@ export function Header({ title }) {
       <header className={classHeader}>
         <div className="container">
           <div className="row">
-            <div className="header">
+            <div className="head">
               <Link href={"/"}>
                 <a >
                   <div className="brandName">
@@ -44,7 +44,6 @@ export function Header({ title }) {
             </div>
           </div>
         </div>
-
       </header>
     )
   }
