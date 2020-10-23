@@ -1,5 +1,5 @@
-export const ACTIVE_AUTHORIZATION = (payload)=>{
+export const LOG_IN_FALSE = (payload)=>{
   return {
-    type:'ACTIVE_AUTHORIZATION', payload:payload
+    type:'LOG_IN_FALSE', payload:payload
   }
 }

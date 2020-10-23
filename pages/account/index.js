@@ -1,48 +1,62 @@
 import { useEffect, useState } from "react";
+import Router from 'next/router';
 import { MainLayout } from '../../layout/MainLayout'
 import config from '../../config.json'
 import Link from 'next/link';
-import {reset} from 'redux-form';
-import {useDispatch} from 'react-redux'
+import { reset } from 'redux-form';
+import { useDispatch} from 'react-redux';
 
 
-import FormTextBox from '../../components/inputs/form-textBox';
+
 import LoginInForm from '../../components/forms/login_in';
-import ReduxForm from '../../components/forms/ttt'
+import { LOG_IN_FALSE } from '../../reducers/actions/action_wigetAuthorization'
 
 export default function Account() {
 
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    return ()=>dispatch(LOG_IN_FALSE(false))
+  })
 
 
-  // const [data, setData] = useState('')
+  // запрос в API
+  function getDataToForm(formData) {
+    async function sendData(data) {
+      const request = await fetch('/api/sign_in', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'aplication/json'
+        },
+        body: JSON.stringify(data)
+      })
+      return request;
+    }
 
-  // async function LogIn(nameUser, loginUser) {
-  //   const req = await fetch('/api/post', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       name: nameUser,
-  //       login: loginUser,
-  //     })
-  //   })
-  //   return req
-  // }
+// href={`/tour/[id]`} as={`/tour/${tour._id}`}>
 
+    sendData(formData).then(data => {
+      data.text().then(data =>{
+        const rezult = data?true:false;
+        console.log(data);
+        if (rezult) {
+          // Если true (юзер найден)
+          // dispatch(reset('LogInForm'))
+          dispatch(LOG_IN_FALSE(false))
+          // отправляю сгенерированный токен в query
+          Router.push({
+            pathname:`/user/${data}`
+          })
+        }
+        else {
+          // юзер не найден
+          dispatch(LOG_IN_FALSE(true))
+        }
+        
+      })
 
+    })
 
-  // useEffect(() => {
-  //   LogIn('Maxi', "dfdsfdsds")
-  //     .then(data => data.text())
-  //     .then(data => setData(data));
-  // }, [])
-
-  function getDataToForm (formData){
-    // console.log(formData);
-    // очистка формы
-    dispatch(reset('LogInForm'))
   }
 
 
@@ -56,7 +70,7 @@ const dispatch = useDispatch()
             <div className="row">
               <h1>Войдите в систему</h1>
               <div className="column col-lg-6">
-                <LoginInForm onSubmit={getDataToForm}/>
+                <LoginInForm onSubmit={getDataToForm} />
                 <div className="signin-forgotpassword">
                   <Link href={'/'}><a><span>Забыли свой ID или пароль?</span></a></Link>
                   <Link href={'/'}><a><span>Зарегистрироваться</span></a></Link>

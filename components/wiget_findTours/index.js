@@ -58,6 +58,8 @@ export default function WigetFindTours() {
   }, []);
 
 
+
+
   useEffect(() => { // редирект на страницу выгрузки
     if (redirect) {
       Router.push('/results')

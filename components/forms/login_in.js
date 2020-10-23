@@ -1,19 +1,33 @@
 import { Field, reduxForm } from 'redux-form';
-import {useSelector} from 'react-redux'
-import {validate} from '../../lib/client/validators/validatorInputs'
+import { useSelector, useDispatch } from 'react-redux'
+import { validate } from '../../lib/client/validators/validatorInputs'
 
 import FormTextBox from '../inputs/form-textBox';
 
 
-function LoginInForm(props){
-  // console.log(props);
-  const {handleSubmit, onSubmit}=props;
-  // console.log(useSelector(state => state.form.LogInForm))
+function LoginInForm(props) {
 
-  // console.log(reset);
+  const { handleSubmit, onSubmit } = props;
+
+
+  // если юзер не найден
+  const logInFalse = useSelector(store => store.wiget_authorization.logInFalse);
+
+  // предуприждение если юзер не найден
+  const AlertText_LoginFalse = () => {
+    return (
+      <div className="formAuth_loginFalse">
+        <p>Указана неверная информация об учетной записи</p>
+      </div>
+    )
+  }
 
   return (
     <form className="formAuth" onSubmit={handleSubmit(onSubmit)}>
+      {logInFalse
+        ?<AlertText_LoginFalse/>
+        :''
+      }
       <Field
         name='login'
         type="email"
@@ -36,4 +50,4 @@ function LoginInForm(props){
   )
 }
 
-export default reduxForm({form: 'LogInForm', validate})(LoginInForm)
+export default reduxForm({ form: 'LogInForm', validate })(LoginInForm)

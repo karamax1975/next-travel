@@ -18,6 +18,7 @@ export default function IndexSlider() {
         
       _getDataFromAPI(sliders[1]).then(data=>{
           setArraySlide(data)
+          return ()=>setArraySlide([])
         })
         
 

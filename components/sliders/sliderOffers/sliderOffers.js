@@ -24,6 +24,7 @@ export default function SliderOffers() {
     getSlide().then(data => {
       setSlide(data);
     })
+    return ()=>setSlide([])
   }, [])
 
 

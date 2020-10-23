@@ -309,5 +309,14 @@
     {
       "country":"Куба"
     }
+  ],
+  "users":[
+    {
+      "login":"max@max.ru",
+      "password":"admin111",
+      "access":"admin",
+      "hash":""
+    }
   ]
+
 }
