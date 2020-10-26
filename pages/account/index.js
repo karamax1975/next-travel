@@ -4,7 +4,7 @@ import { MainLayout } from '../../layout/MainLayout'
 import config from '../../config.json'
 import Link from 'next/link';
 import { reset } from 'redux-form';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -15,8 +15,8 @@ export default function Account() {
 
   const dispatch = useDispatch()
 
-  useEffect(()=>{
-    return ()=>dispatch(LOG_IN_FALSE(false))
+  useEffect(() => {
+    return () => dispatch(LOG_IN_FALSE(false))
   })
 
 
@@ -33,26 +33,24 @@ export default function Account() {
       return request;
     }
 
-// href={`/tour/[id]`} as={`/tour/${tour._id}`}>
-
     sendData(formData).then(data => {
-      data.text().then(data =>{
-        const rezult = data?true:false;
-        console.log(data);
+      data.text().then(token => {
+        const rezult = token ? true : false;
         if (rezult) {
           // Если true (юзер найден)
-          // dispatch(reset('LogInForm'))
+          dispatch(reset('LogInForm'))
           dispatch(LOG_IN_FALSE(false))
           // отправляю сгенерированный токен в query
+
           Router.push({
-            pathname:`/user/${data}`
+            pathname:`/user/${token}`,
           })
         }
         else {
           // юзер не найден
           dispatch(LOG_IN_FALSE(true))
         }
-        
+
       })
 
     })

@@ -1,24 +1,32 @@
-export default function User ({user}){
+export default function User({ user, tours }) {
 
-  console.log(user);
+
+
+
+  // console.log(tours);
 
   return (
-    <h1>Hello</h1>
+    <h1>Hello {user}</h1>
   )
 }
 
 User.getInitialProps = async (context) => {
+    const request = await fetch('http://localhost:3000/api/auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'aplication/json'
+      },
+      body: context.query.id
 
-  return {
-    user:context.query
-  }
+    })
+    const data = await request.json();
 
-  // const res = await fetch(`/api/tours`);
-  // const getTour = await res.json();
-  // const tour = getTour.filter(a=>a._id==context.query.id)
-  // return {
-  //   tour
-  // }
+    return {
+      user: data.name,
+      tours: data.tours
+    }
+
+
 }
 
 
