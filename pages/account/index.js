@@ -38,7 +38,7 @@ export default function Account() {
         const rezult = token ? true : false;
         if (rezult) {
           // Если true (юзер найден)
-          dispatch(reset('LogInForm'))
+          // dispatch(reset('LogInForm'))
           dispatch(LOG_IN_FALSE(false))
           // отправляю сгенерированный токен в query
 

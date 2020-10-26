@@ -11,7 +11,8 @@ export default function User({ user, tours }) {
 }
 
 User.getInitialProps = async (context) => {
-    const request = await fetch('http://localhost:3000/api/auth', {
+  // console.log(process.env);
+    const request = await fetch('api/auth', {
       method: 'POST',
       headers: {
         'Content-Type': 'aplication/json'
