@@ -12,7 +12,7 @@ export default function User({ user, tours }) {
 
 User.getInitialProps = async (context) => {
   // console.log(process.env);
-    const request = await fetch(`${PATCH_DEPLOY}api/auth`, {
+    const request = await fetch(`${process.env.PATCH_DEPLOY}api/auth`, {
       method: 'POST',
       headers: {
         'Content-Type': 'aplication/json'
