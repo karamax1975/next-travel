@@ -3,7 +3,7 @@ export default function User({ user, tours }) {
 
 
 
-  // console.log(tours);
+  console.log(process.env.PATH_LOCALE);
 
   return (
     <h1>Hello {user}</h1>
@@ -12,7 +12,7 @@ export default function User({ user, tours }) {
 
 User.getInitialProps = async (context) => {
   // console.log(process.env);
-    const request = await fetch('api/auth', {
+    const request = await fetch(`${PATCH_DEPLOY}api/auth`, {
       method: 'POST',
       headers: {
         'Content-Type': 'aplication/json'
