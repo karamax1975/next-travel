@@ -5,7 +5,7 @@ import {IndexHeader} from '../components/header/indexHeader';
 
 // import {IndexHeader} from "../components/header/indexHeader";
 
-export default function IndexLayout({children, title}) {
+export default function IndexLayout({children, title, data}) {
 
 
     return (
@@ -16,7 +16,7 @@ export default function IndexLayout({children, title}) {
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet"></link>
             </Head>
-            <IndexHeader title={title}/>
+            <IndexHeader title={title} data={data}/>
             <main>{children}</main>
         </>
     )

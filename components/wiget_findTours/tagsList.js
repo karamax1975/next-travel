@@ -6,8 +6,9 @@ export default function TagsList (){
     const [arrTags, setArrTags]=useState([]);
 
     useEffect(()=>{
+      let controller = new AbortController();
         async function getTags(){
-            const response = await fetch('/api/tours');
+            const response = await fetch('/api/tours', {signal: controller.signal});
             return response.json()
         }
         getTags().then(tours=>{
@@ -20,6 +21,9 @@ export default function TagsList (){
             setArrTags(arr)
             
         })
+        return ()=>{
+          controller.abort()
+        }
     },[])
 
     const tagsList= arrTags.map((tag, index)=>{

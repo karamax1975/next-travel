@@ -6,7 +6,7 @@ import resizeContainer from '../../header/resizeContainer';
 import config from '../../../config.json';
 import {_getDataFromAPI} from '../../../lib/client/getData';
 
-export default function IndexSlider() {
+export default function IndexSlider({data}) {
     const slideRef = useRef();
     const [arraySlide, setArraySlide] = useState([]);
     const [posLeft, setPosLeft] = useState(0);
@@ -16,11 +16,9 @@ export default function IndexSlider() {
 
     useEffect(() => {
         
-      _getDataFromAPI(sliders[1]).then(data=>{
-          setArraySlide(data)
-          return ()=>setArraySlide([])
-        })
-        
+      setArraySlide(data)
+
+      
 
         // ----------- Устанавливаем левый край container
         const bodyWidth = document.body.clientWidth;

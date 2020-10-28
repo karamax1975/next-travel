@@ -30,6 +30,24 @@ export default function wiget_SearchTours(store = initialStore, action) {
         case 'SET_CHILD': {
             return {...store, child: action.payload}
         }
+        case 'INC_ADULT':{
+          if(store.adults<6)
+          return {...store, adults:store.adults+1}
+          else return {...store, adults:store.adults}
+        }
+        case 'DEC_ADULT':{
+          if(store.adults>0)
+          return {...store, adults:store.adults-1}
+        }
+        case "INC_CHILD":{
+          if(store.child<6)
+          return {...store, child:store.child+1}
+          else return {...store, child:store.child}
+        }
+        case "DEC_CHILD":{
+          if(store.child>0)
+          return {...store, child:store.child-1}
+        }
         case 'ADD_TAG': {
             const arr=store.tags;
             arr.push(action.payload)

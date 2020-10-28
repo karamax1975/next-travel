@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from "react";
 import getDate from "./date";
 
-export default function calendar({ name, getUserSelect }) {
+export default function calendar({getUserSelect, placeholder }) {
+
+
   const [onDropDown, setOnDropDown] = useState(false);
   const [year, setYear] = useState(new Date().getFullYear());
   const [mount, setMount] = useState(new Date().getMonth());
   const [navClass, setNavClass] = useState("calendar_nav_prev stop");
   const [selected, setSelected]=useState(false);
   let arrMount = getDate(year, mount);
-
-  function onOff() {
-    setOnDropDown(!onDropDown);
-  }
-
-  function dropDown() {
-    onOff();
-  }
 
   const dropPanelRef = React.createRef();
 
@@ -24,7 +18,7 @@ export default function calendar({ name, getUserSelect }) {
       dropPanelRef.current !== null &&
       !dropPanelRef.current.contains(e.target)
     )
-      dropDown();
+      setOnDropDown(false)
   }
 
   useEffect(() => {
@@ -80,8 +74,8 @@ export default function calendar({ name, getUserSelect }) {
     const selectedClass =selected?'input selected':'input';
     return (
       <div className="input-wrapper">
-        <div className={selectedClass} onClick={onOff}>
-          <span>{name}</span>
+        <div className={selectedClass} onClick={()=>setOnDropDown(true)}>
+          <span>{placeholder}</span>
           <div className="input_icon">
             <svg width="9" height="6" viewBox="0 0 9 6" fill="none">
               <path d="M1 1L4.5 5L8 1" strokeLinecap="round" />
@@ -94,8 +88,8 @@ export default function calendar({ name, getUserSelect }) {
     return (
       <div className="input-wrapper" ref={dropPanelRef}>
         <div className="input">
-          <span>{name}</span>
-          <div className="input_icon" onClick={onOff}>
+          <span>{placeholder}</span>
+          <div className="input_icon" onClick={()=>setOnDropDown(false)}>
             <svg width="9" height="6" viewBox="0 0 9 6" fill="none">
               <path d="M1 5L4.5 1L8 5" strokeLinecap="round" />
             </svg>
@@ -129,7 +123,7 @@ export default function calendar({ name, getUserSelect }) {
             <span>Сб</span>
             <span>Вс</span>
           </div>
-          <div className="calendar_content" onClick={onOff}>
+          <div className="calendar_content" onClick={()=>setOnDropDown(false)}>
             {arrDay}
           </div>
         </div>

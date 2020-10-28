@@ -1,5 +1,4 @@
 {
-    "db":"mongodb+srv://max:German2002@karamax.idcis.mongodb.net",
     "collection":"travel",
     "priceAdult":0.5,
     "priceChild":0.2,

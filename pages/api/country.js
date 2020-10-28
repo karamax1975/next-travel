@@ -1,38 +1,29 @@
 
 import nextConnect from 'next-connect';
-import Mongo from 'mongodb';
+import connect_DB from '../../lib/server/connect_DB';
+import hash from '../../lib/server/setHash'
 
-import config from '../../config.json'
 
 
-const Client = Mongo.MongoClient;
 const connect = nextConnect();
 
+connect.get((req, res) =>{
 
-const mongoClient = new Client(config.db,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-
-connect.get((req, res) => {
-  mongoClient.connect((err, client) => {
-    if (!err) {
-      const db = client.db(config.collection);
-      const collection = db.collection(`${config.wigetSelectTours[0]}`);
-      collection.find({}).toArray()
-        .then(data => {
-          res.send(data);
-          res.end();
-        })
-    }
-    else console.log(err)
+  connect_DB('tours',(collection, client)=>{
+    const arrayCountry = collection.distinct('country');
+    arrayCountry.then(data=>{
+      const array = data.map(item=>{
+        const id=hash();
+        return {
+          _id:id,
+          country:item
+        }
+      })
+      res.send(array);
+      res.end();
+      client.close();
+    })
   })
-
 })
-
-
-
-
 
 export default connect

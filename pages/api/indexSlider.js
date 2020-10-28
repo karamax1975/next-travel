@@ -8,7 +8,7 @@ const Client = Mongo.MongoClient;
 const connect = nextConnect();
 
 
-const mongoClient = new Client(config.db,
+const mongoClient = new Client(process.env.PATH_DB,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

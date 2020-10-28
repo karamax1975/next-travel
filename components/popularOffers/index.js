@@ -10,7 +10,7 @@ import { RESET_FILTER } from '../../reducers/actions/action_popularOffers'
 
 
 
-export default function PopularOffers({ titleSection }) {
+export default function PopularOffers({ titleSection, tabs }) {
   const [numberTours, setNumberTours] = useState(8);
   const [arrayTours, setArrayTours] = useState([]);
   const [allTours, setAllTours] = useState([])
@@ -20,7 +20,13 @@ export default function PopularOffers({ titleSection }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    _getDataFromAPI('tours').then(data => {
+    let controller = new AbortController();
+    async function getTours(){
+      const response = await fetch(`${process.env.PATH}api/tours`, {signal: controller.signal});
+      return response.json()
+    }
+
+    getTours().then(data => {
       setAllTours(data)
       // для рендера списка туров забираю массив равный numberTours 
       getListTours(data, numberTours).then(data => {
@@ -30,8 +36,7 @@ export default function PopularOffers({ titleSection }) {
     return () => {
       // сбрасываю в сторе popularOffers.filter
       dispatch(RESET_FILTER())
-      setAllTours([])
-      setArrayTours([])
+      controller.abort()
     }
   }, [])
 
@@ -81,7 +86,7 @@ export default function PopularOffers({ titleSection }) {
             <h5 className="section-title">{titleSection}</h5>
           </div>
         </div>
-        <SliderOffer />
+        <SliderOffer tabs={tabs}/>
         <TourList tours={arrayTours} col={'col4'} />
         <ButtonMore
           name="Загрузить еще"

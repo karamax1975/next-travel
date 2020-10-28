@@ -4,32 +4,23 @@ import Loader from './loader';
 import SlideItem from './sliderItem';
 
 
-export default function SliderOffers() {
+export default function SliderOffers({ tabs }) {
 
   const [slide, setSlide] = useState([])
   const [numberSlide, setNumverSlide] = useState(6)
   const [activeSlide, setActiveSlide] = useState(null)
   const slideRef = useRef();
 
-  async function getSlide() {
-    const request = await fetch('api/type');
-    const data = await request.json();
-    return data.map(element => element)
 
-  }
-
-  
 
   useEffect(() => {
-    getSlide().then(data => {
-      setSlide(data);
-    })
-    return ()=>setSlide([])
+    setSlide(tabs)
+    return () => setSlide([])
   }, [])
 
 
   const offerItem = slide.map((offer, index) => {
-    const className=index!=activeSlide?"offerItem":"offerItem active";
+    const className = index != activeSlide ? "offerItem" : "offerItem active";
 
     return (
       <SlideItem
@@ -38,7 +29,7 @@ export default function SliderOffers() {
         setActive={setActiveSlide}
         indexActive={index}
         className={className}
-        />
+      />
     )
   })
 
@@ -85,7 +76,7 @@ export default function SliderOffers() {
         ? <Slider {...settings} ref={slideRef}>
           {offerItem}
         </Slider>
-        : <Loader/>
+        : <Loader />
       }
     </>
   )

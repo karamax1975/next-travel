@@ -6,16 +6,13 @@ import { _getDataFromAPI } from '../../../lib/client/getData';
 import config from '../../../config.json';
 import Loader from './loader';
 
-export default function SliderRow({ titleSection }) {
+export default function SliderRow({ titleSection, data}) {
   const [arraySlide, setArraySlide] = useState([])
   const slideRef = useRef();
 
-  const { sliders } = config;
 
   useEffect(() => {
-    _getDataFromAPI(sliders[0]).then(data => {
-      setArraySlide(data);
-    })
+    setArraySlide(data)
   }, [])
 
 

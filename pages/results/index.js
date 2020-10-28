@@ -17,7 +17,7 @@ import filterTags from '../../components/rezultPage/filterTags';
 import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD, CLEAR_TAGS } from '../../reducers/actions/action_wigetSearcTour';
 
 
-export default function Result() {
+export default function Result({list}) {
 
   const {API} = config;
   const dispatch = useDispatch();
@@ -117,10 +117,9 @@ export default function Result() {
 }
 
 
-// Result.getInitialProps = async () => {
-//   const response = await fetch("/api/tours");
-//   const list = await response.json();
-//   return {
-//     list,
-//   };
-// };
+Result.getInitialProps = async (context) => {
+  console.log(context);
+  return {
+    list:'hhhhhh',
+  };
+};

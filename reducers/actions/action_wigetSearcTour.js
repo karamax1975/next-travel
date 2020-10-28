@@ -43,3 +43,15 @@ export const CLEAR_TAGS=()=>{
         type:"CLEAR_TAGS"
     }
 }
+export const INC_CHILD=()=>{
+  return {type:'INC_CHILD'}
+}
+export const DEC_CHILD=()=>{
+  return {type:'DEC_CHILD'}
+}
+export const DEC_ADULT=()=>{
+  return {type:'DEC_ADULT'}
+}
+export const INC_ADULT=()=>{
+  return {type:'INC_ADULT'}
+}

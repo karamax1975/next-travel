@@ -5,14 +5,14 @@ import { useDispatch } from 'react-redux';
 
 import { SET_SEARCH, SET_COUNTRY, SET_TYPE, SET_DATE, SET_ADULTS, SET_CHILD } from '../../reducers/actions/action_wigetSearcTour';
 
-import {_getDataFromAPI} from '../../lib/client/getData';
+import { _getDataFromAPI } from '../../lib/client/getData';
 import config from '../../config.json';
 import StringInput from '../inputs/stringInput';
 import Calendar from "./input_calendar";
 import InputNumberOfTourists from './inputNumberOfTourists';
 import TagsList from './tagsList'
 
-const {wigetSelectTours} = config;
+const { wigetSelectTours } = config;
 
 
 export default function WigetFindTours() {
@@ -28,56 +28,60 @@ export default function WigetFindTours() {
     select: useSelector(state => state.wiget_SearchTours.date),
     textPlaceholder: "Дата тура",
   })
-  const [tourists, setTourists] = useState({
-    adults: useSelector(state => state.wiget_SearchTours.adults),
-    child: useSelector(state => state.wiget_SearchTours.child)
-  })
 
-  const [touristPlaseholder, setTouristPlaseholder] = useState(`${tourists.adults} взрослых, без детей`);
+
+
+  const numberChildren = useSelector(state => state.wiget_SearchTours.child);
+  const numberAdults = useSelector(state => state.wiget_SearchTours.adults);
+  const selectedData = useSelector(state => state.wiget_SearchTours.date);
+  const selectedCountry = useSelector(state => state.wiget_SearchTours.country);
+  const selectedType = useSelector(state => state.wiget_SearchTours.type);
+
+
+
+  const [touristPlaseholder, setTouristPlaseholder] = useState(`${numberAdults} взрослых, без детей`);
   const [listCountry, setListCountry] = useState([]);
   const [listType, setListType] = useState([]);
 
 
-  const [redirect, setRedirect] = useState(false);
+
   function Search() {
     dispatch(SET_SEARCH(true))
-    dispatch(SET_ADULTS(tourists.adults))
-    dispatch(SET_CHILD(tourists.child))
-    setRedirect(true);
+    dispatch(SET_ADULTS(numberAdults))
+    dispatch(SET_CHILD(numberChildren))
+    // Router.push({
+    //   pathname:'/results',
+    //   numberAdults
+    // })  
+    Router.push({
+      pathname: '/results',
+      query: {
+        type:selectedType,
+        country:selectedCountry,
+        adults: numberAdults,
+        child:numberChildren
+      }
+    })
   }
 
   useEffect(() => {
-
-    _getDataFromAPI(wigetSelectTours[0]).then(country=>{
+    let controller = new AbortController();
+    _getDataFromAPI(wigetSelectTours[0], controller).then(country => {
       setListCountry(country)
     });
-    _getDataFromAPI(wigetSelectTours[1]).then(type=>{
+    _getDataFromAPI(wigetSelectTours[1], controller).then(type => {
       setListType(type)
     });
-    
+    return ()=>{
+      controller.abort()
+    }
   }, []);
 
 
+  useEffect(() => {
+    changePlaseholder(numberAdults, numberChildren)
+  }, [numberChildren, numberAdults])
 
-
-  useEffect(() => { // редирект на страницу выгрузки
-    if (redirect) {
-      Router.push('/results')
-    }
-  }, [redirect]);
-
-
-
-  // useEffect(()=>{
-  //     fetch("http://localhost:4200/country")
-  //     .then(response=>response.json())
-  //     .then(json=>setCountry(old=>{
-  //       return{
-  //         ...old,
-  //         array:json
-  //       }
-  //     }));
-  // },[])
 
   function getUserSelectCountry(value) {
 
@@ -121,14 +125,7 @@ export default function WigetFindTours() {
 
   }
 
-  function getTourist(adults, child) {
-    setTourists(state => {
-      return {
-        ...state,
-        adults,
-        child
-      }
-    })
+  function changePlaseholder(adults, child) {
 
     const stringAdults = adults > 1 ? 'взрослых' : 'взрослый';
     const numberChild = child > 0 ? child : ''
@@ -168,7 +165,7 @@ export default function WigetFindTours() {
         <div className="wrapper">
           <div className="findTour_filtrs">
             <h4>Поиск туров</h4>
-            <TagsList/>
+            <TagsList />
           </div>
           <div className="findTour_inputs">
             <div className="input-wrapper" >
@@ -188,12 +185,13 @@ export default function WigetFindTours() {
               />
             </div>
             <Calendar
-              name={date.textPlaceholder}
+              placeholder={selectedData ? selectedData : 'Дата тура'}
               getUserSelect={getDateTour}
             />
             <InputNumberOfTourists
               name={touristPlaseholder}
-              getUserSelect={getTourist}
+              children={numberChildren}
+              adults={numberAdults}
             />
           </div>
         </div>

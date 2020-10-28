@@ -14,8 +14,7 @@ import CalendarOfEvents from '../components/calendarOfEvents/index'
 
 
 
-export default function Index() {
-
+export default function Index({dataSliderHeader, dataSliderRow, PopularOffersTabs}) {
 
   // ---- Серверный код
   // if (!process.browser) {
@@ -24,13 +23,30 @@ export default function Index() {
 
   // }
 
+  
+
   return (
-    <IndexLayout title={'Index'}>
+    <IndexLayout title={'Index'} data={dataSliderHeader}>
       <WigetFindTours />
-      <SlideRow titleSection={'Туда, где всегда тепло'} />
-      <PopularOffers titleSection={'Популярные предложения'}/>
+      <SlideRow titleSection={'Туда, где всегда тепло'}  data={dataSliderRow}/>
+      <PopularOffers titleSection={'Популярные предложения'} tabs={PopularOffersTabs}/>
       <CalendarOfEvents titleSection={'Календарь событий'}/>
     </IndexLayout>
   );
 }
 
+Index.getInitialProps = async ()=>{
+
+  const responseHeaderSlider = await fetch(`${process.env.PATH}api/indexSlider`);
+  const slideJson = await responseHeaderSlider.json();
+  const responseSliderRow = await fetch(`${process.env.PATH}api/sliderRow`);
+  const SliderRowJson = await responseSliderRow.json();
+  const responseTabSliderRow = await fetch(`${process.env.PATH}api/sliderRow_tab`);
+  const TabSliderRow = await responseTabSliderRow.json();
+
+  return {
+    dataSliderHeader:slideJson,
+    dataSliderRow:SliderRowJson,
+    PopularOffersTabs:TabSliderRow
+  }
+}

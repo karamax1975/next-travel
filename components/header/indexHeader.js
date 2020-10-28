@@ -10,7 +10,7 @@ import config from './../../config.json';
 import IndexSlider from '../sliders/indexSlider/indexSlider';
 import IndexUser from './indexUser';
 
-export function IndexHeader({ title }) {
+export function IndexHeader({ title, data }) {
 
   const dispatch = useDispatch();
 
@@ -48,7 +48,7 @@ export function IndexHeader({ title }) {
             </div>
           </div>
         </div>
-        <IndexSlider/>
+        <IndexSlider data={data}/>
         <IndexUser/>
       </header>
     )

@@ -5,7 +5,7 @@ import config from '../../config.json';
 
 
 const connect = nextConnect();
-const mongoClient = new MongoClient(config.db, { useNewUrlParser: true, useUnifiedTopology: true, });
+const mongoClient = new MongoClient(process.env.PATH_DB, { useNewUrlParser: true, useUnifiedTopology: true, });
 
 
 
