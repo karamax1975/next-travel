@@ -1,3 +1,5 @@
+import TitleFilter from '../filters/titleFilter'
+
 export default function CalendarOfEvents({ titleSection }) {
 
   return (
@@ -7,7 +9,7 @@ export default function CalendarOfEvents({ titleSection }) {
           <div className="col">
             <div className="multiple-Title">
               <h5 className="section-title">{titleSection}</h5>
-              <div>dfgdfdfdfd</div>
+              <TitleFilter/>
             </div>
 
           </div>

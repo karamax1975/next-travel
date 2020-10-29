@@ -65,16 +65,18 @@ export default function WigetFindTours() {
   }
 
   useEffect(() => {
-    let controller = new AbortController();
-    _getDataFromAPI(wigetSelectTours[0], controller).then(country => {
+    async function getData(){
+      const response = await fetch('api/tours');
+      return await response.json();
+
+    }
+    getData().then(country => {
       setListCountry(country)
     });
-    _getDataFromAPI(wigetSelectTours[1], controller).then(type => {
+    getData().then(type => {
       setListType(type)
     });
-    return ()=>{
-      controller.abort()
-    }
+    
   }, []);
 
 
