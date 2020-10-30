@@ -7,7 +7,7 @@ module.exports = {
   env: {
     PATH:'https://next-travel.vercel.app/',
     PATH_LOCALE: 'http://localhost:3000/',
-    PATCH_DEPLOY:'https://next-travel.vercel.app:8080/'
+    PATCH_DEPLOY:'https://next-travel.vercel.app/'
   },
 
 }

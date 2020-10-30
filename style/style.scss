@@ -1499,6 +1499,11 @@ header{
 .CalendarOfEvents{
   padding-top: 30px;
   padding-bottom: 60px;
+  .titleFilter{
+    width: 260px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+  }
 }
 
 // =========================== Authorization ====================================
@@ -1589,6 +1594,114 @@ header{
         margin-top: 3px;
       }
       // border-bottom: solid 1px $red;
+    }
+  }
+}
+
+// ================================= titleFilter ====================================
+.titleFilter{
+  position: relative;
+  .titleFilter_head{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    border: solid 1px $gray5;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+    background: $white;
+    cursor: pointer;
+      .titleFilter_head__filter{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 15px;
+        flex: 1;
+        span{
+          font-size: 16px;
+          font-weight: 600;
+        }
+        .titleFilter_head__icon{
+          position: relative;
+          height: 100%;
+          width: 30px;
+          height: 30px;
+            
+          svg{
+            stroke-width: 2px;
+            stroke: $red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+    .reset-filter{
+      width: 30px;
+      height: 30px;
+      background: $gray5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg{
+        fill:$red;
+        width: 8px;
+        height: 8px;
+      }
+    }
+    .reset-filter:hover{
+      background: $red;
+      svg{
+        fill: $white;
+      }
+    }
+  }
+  .titleFilter_dropDown{
+    overflow: hidden;
+    position: absolute;
+    background: $white;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 9;
+    .titleFilter_dropDown__list{
+      border: none;
+      height: 0;
+      .dropDown__item{
+        height: 30px;
+        width: 100%;
+        cursor: pointer;
+        border-bottom: solid 1px $gray6;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+      }
+      .dropDown__item:hover{
+        background: $gray6;
+      }
+    }
+  }
+}
+.titleFilter.active{
+  transition: all .3s;
+  .titleFilter_head{
+    border-bottom: solid 1px $red;
+    .titleFilter_head__icon{
+      svg{
+        transform:
+        translate(-50%, -50%)
+        rotate(180deg)
+        ;
+      }
+    }
+  }
+  .titleFilter_dropDown{
+    .titleFilter_dropDown__list{
+      min-height: 30px;
+      max-height: 90px;
+      overflow-y: auto;
+      border: solid 1px $gray5;
     }
   }
 }

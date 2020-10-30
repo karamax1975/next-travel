@@ -27,10 +27,10 @@ export default function Index({dataSliderHeader, dataSliderRow, PopularOffersTab
 
   return (
     <IndexLayout title={'Index'} data={dataSliderHeader}>
-      <WigetFindTours />
+      {/* <WigetFindTours />
       <SlideRow titleSection={'Туда, где всегда тепло'}  data={dataSliderRow}/>
       <PopularOffers titleSection={'Популярные предложения'} tabs={PopularOffersTabs}/>
-      <CalendarOfEvents titleSection={'Календарь событий'}/>
+      <CalendarOfEvents titleSection={'Календарь событий'}/> */}
     </IndexLayout>
   );
 }

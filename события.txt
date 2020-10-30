@@ -1,3 +1,4 @@
+{
 name:"Hellfest French music festival 2021",
 type:"Фестиваль",
 country: "Франция",
@@ -8,3 +9,4 @@ description:"Живописный французский прованс озаряется тяжелыми риффами ежегодно,
 imgPreview:"",
 imgDetail:"",
 price:"46100"
+}
