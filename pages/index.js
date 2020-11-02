@@ -8,7 +8,8 @@ import ReactDOM from 'react-dom';
 import WigetFindTours from '../components/wiget_findTours/index';
 import SlideRow from '../components/sliders/sliderRow/sliderRow';
 import PopularOffers from '../components/popularOffers/index';
-import CalendarOfEvents from '../components/calendarOfEvents/index'
+import CalendarOfEvents from '../components/calendarOfEvents/index';
+import Reviews from '../components/reviews/index';
 
 
 
@@ -31,6 +32,7 @@ export default function Index({dataSliderHeader, dataSliderRow, PopularOffersTab
       <SlideRow titleSection={'Туда, где всегда тепло'}  data={dataSliderRow}/>
       <PopularOffers titleSection={'Популярные предложения'} tabs={PopularOffersTabs}/>
       <CalendarOfEvents titleSection={'Календарь событий'}/>
+      <Reviews titleSection={'Отзывы наших туристов'}/>
     </IndexLayout>
   );
 }

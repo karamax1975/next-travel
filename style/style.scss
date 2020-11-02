@@ -94,10 +94,35 @@ input::placeholder{
   font-weight: 300;
   color: $black;
 }
+.LoadMore.borderRed{
+  border: solid 1px $red;
+}
 .LoadMore:hover{
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   color: $red;
   transition: all .2s;
+}
+.btn-reset{
+  width: 40px;
+  height: 40px;
+  background: $gray6;
+  margin-left: 15px;
+  border-radius: 2px;
+}
+.btn-reset:hover{
+  background: $red;
+}
+.btn-reset.noText{
+  svg{
+    fill: $red;
+    width: 10px;
+    height: 10px;
+  }
+}
+.btn-reset.noText:hover{
+  svg{
+    fill: $white;
+  }
 }
 
 
@@ -1499,11 +1524,6 @@ header{
 .CalendarOfEvents{
   padding-top: 30px;
   padding-bottom: 60px;
-  .titleFilter{
-    width: 260px;
-    padding-top: 30px;
-    padding-bottom: 15px;
-  }
 }
 
 // =========================== Authorization ====================================
@@ -1599,11 +1619,21 @@ header{
 }
 
 // ================================= titleFilter ====================================
+.multiple-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  .section-title{
+    width: 100%;
+    margin-right: 40px;
+    flex: 1;
+  }
+}
 .titleFilter{
   position: relative;
   .titleFilter_head{
     width: 100%;
-    height: 30px;
+    height: 40px;
     display: flex;
     align-items: center;
     border: solid 1px $gray5;
@@ -1618,6 +1648,7 @@ header{
         justify-content: space-between;
         padding-left: 15px;
         flex: 1;
+        width: 250px;
         span{
           font-size: 16px;
           font-weight: 600;
@@ -1625,8 +1656,8 @@ header{
         .titleFilter_head__icon{
           position: relative;
           height: 100%;
-          width: 30px;
-          height: 30px;
+          width: 40px;
+          height: 40px;
             
           svg{
             stroke-width: 2px;
@@ -1639,8 +1670,8 @@ header{
         }
       }
     .reset-filter{
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       background: $gray5;
       display: flex;
       align-items: center;
@@ -1669,7 +1700,7 @@ header{
       border: none;
       height: 0;
       .dropDown__item{
-        height: 30px;
+        height: 40px;
         width: 100%;
         cursor: pointer;
         border-bottom: solid 1px $gray6;
@@ -1698,10 +1729,71 @@ header{
   }
   .titleFilter_dropDown{
     .titleFilter_dropDown__list{
-      min-height: 30px;
-      max-height: 90px;
+      height: 120px;
       overflow-y: auto;
       border: solid 1px $gray5;
     }
+  }
+}
+
+// ======================================== CalendarEvents List
+.listEvents{
+  padding-top: 30px;
+
+}
+.ItemEvent:hover{
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  .ItemEvent-preview{
+    img{
+      transition: 1s;
+      transform: scale(1.1, 1.1);
+    }
+  }
+}
+.ItemEvent{
+  border: solid 1px $gray5;
+  margin-bottom: 30px;
+  .ItemEvent-preview{
+    width: 100%;
+    // height: 150px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    img{
+      width: 100%;
+      object-fit:cover;
+      transition: 1s;
+    }
+  }
+  .ItemEvent-content{
+    padding: 15px;
+    padding-bottom: 20px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+      .content-up{
+        span{
+          color: $red;
+        }
+        h6{
+          color: $black;
+          margin-top: 15px;
+        }
+      }
+      .content-down{
+        color: $gray4;
+        .positionEvent{
+          margin-top: 10px;
+          display: flex;
+          align-items: center;
+          svg{
+            fill: $gray4;
+            width: 12px;
+            height: 17px;
+            margin-right: 7px;
+          }
+        }
+      }
   }
 }
