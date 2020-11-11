@@ -124,6 +124,21 @@ input::placeholder{
     fill: $white;
   }
 }
+.btn-link{
+  padding: 11px 15px;
+  border: 2px;
+  overflow: hidden;
+}
+.btn-link.red{
+  background: $red;
+  a{
+    color: $white;
+  } 
+}
+.btn-link.red:hover{
+  background: $light_red;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 
 
 
@@ -922,9 +937,6 @@ header{
     margin-bottom: 0;
   }
 }
-.col-lg-3{
-  background: silver;
-}
 
 .tour-list{
   display: flex;
@@ -937,7 +949,7 @@ header{
     margin-bottom: 30px;
     padding-left: 15px;
     padding-right: 15px;
-    width: 329px;
+    // width: 329px;
   }
 
   .tour-card{
@@ -1795,5 +1807,27 @@ header{
           }
         }
       }
+  }
+}
+.CalendarOfEvents-loader{
+  padding-top: 30px;  
+  .CalendarOfEvents-host__item{
+    .host-item_event__img{
+      height: 164px;
+      background: $gray6;
+    }
+    .host-item_event__content{
+      height: 184px;
+      margin-bottom: 30px;
+      border: solid 1px $gray6;
+      padding: 15px;
+      .host-row{
+        height: 20px;
+        background: $gray6;
+        width: 100%;
+        margin-bottom: 15px;
+        border-radius: 10px;
+      }
+    }
   }
 }

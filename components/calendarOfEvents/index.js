@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ListEvents from './listEvents';
 import { EVENTS_SET_FILTER, EVENTS_RESET_FILTER } from '../../reducers/actions/action_popularEvents';
 import Reset from '../buttons/reset';
+import Loader from './loader';
 
 
 export default function CalendarOfEvents({ titleSection }) {
@@ -18,7 +19,7 @@ export default function CalendarOfEvents({ titleSection }) {
   const filter = useSelector(store => store.popularEvents.eventsFilter)
 
   async function getEvents() {
-    const response = await fetch('api/events');
+    const response = await fetch(`api/events`);
     return await response.json();
   }
 
@@ -80,10 +81,14 @@ export default function CalendarOfEvents({ titleSection }) {
               action={setFilter}
               data={arrFilters}
             />
-            <Reset action={resetFilter}/>
+            <Reset action={resetFilter} />
           </div>
         </div>
-        <ListEvents data={renderEvents} actionButton={moreEvents} />
+        {arrEvents.length > 0
+          ? <ListEvents data={renderEvents} actionButton={moreEvents} />
+          :<Loader/>
+        }
+
       </div>
     </section>
   )

@@ -9,7 +9,7 @@ export default function Reviews({titleSection}) {
         <div className="row">
           <div className="col multiple-title">
             <h5 className="section-title">{titleSection}</h5>
-            <ButtonLink link={''} name={'Оставить отзыв'}/>
+            <ButtonLink link={''} name={'Оставить отзыв'} classN={'red'}/>
           </div>
         </div>
       </div>

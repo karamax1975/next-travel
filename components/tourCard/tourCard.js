@@ -31,7 +31,7 @@ export default function tourCard({ tour, adults = config.adults, child = config.
   });
 
   return (
-    <div className={`card-wrapper`}>
+    <div className='card-wrapper col-lg-3' >
       <Link href={`/tour/[id]`} as={`/tour/${tour._id}`}>
         <a>
           <div className="tour-card" >

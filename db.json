@@ -1,322 +1,329 @@
 {
   "tours": [
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "Франция",
       "town": "Париж",
-      "type":"Экскурсионные туры",
+      "type": "Экскурсионные туры",
       "price": "72000",
       "duration": "14",
       "number": "на двоих",
       "description": "",
       "imgUrl": "/upload/Paris.jpg",
-      "start":"2020-01-01",
-      "end":"2022-01-01",
-      "tags":"Все включено,Горячие туры"
+      "start": "2020-01-01",
+      "end": "2022-01-01",
+      "tags": "Все включено,Горячие туры"
     },
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "Крит",
       "town": "Ираклион",
-      "type":"Пляжный отдых",
+      "type": "Пляжный отдых",
       "price": "33000",
       "duration": "14",
       "number": "1",
       "description": "",
       "imgUrl": "/upload/Crit.jpg",
-      "start":"2020-10-01",
-      "end":"2022-01-01",
-      "tags":"Все включено,Семейный отдых"
+      "start": "2020-10-01",
+      "end": "2022-01-01",
+      "tags": "Все включено,Семейный отдых"
     },
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "Чехия",
       "town": "Прага",
-      "type":"Автобусные туры",
+      "type": "Автобусные туры",
       "price": "42000",
       "duration": "7",
       "number": "2",
       "description": "",
       "imgUrl": "/upload/Praga.jpg",
-      "start":"2020-10-01",
-      "end":"2022-01-01",
-      "tags":"Все включено"
+      "start": "2020-10-01",
+      "end": "2022-01-01",
+      "tags": "Все включено"
     },
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "Япония",
       "town": "Хикоти",
-      "type":"Горнолыжные туры",
+      "type": "Горнолыжные туры",
       "price": "122000",
       "duration": "7",
       "number": "2",
       "description": "",
       "imgUrl": "/upload/Hikoti.jpg",
-      "start":"2020-02-01",
-      "end":"2022-12-01",
-      "tags":""
+      "start": "2020-02-01",
+      "end": "2022-12-01",
+      "tags": ""
     },
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "США",
       "town": "Нью-Йорк",
-      "type":"Экскурсионные туры",
+      "type": "Экскурсионные туры",
       "price": "140000",
       "duration": "7",
       "number": "2",
       "description": "",
       "imgUrl": "/upload/NY.jpg",
-      "start":"2020-02-01",
-      "end":"2022-01-01",
-      "tags":"Горячие туры"
+      "start": "2020-02-01",
+      "end": "2022-01-01",
+      "tags": "Горячие туры"
     },
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "Россия",
       "town": "Москва",
-      "type":"Экскурсионные туры",
+      "type": "Экскурсионные туры",
       "price": "30000",
       "duration": "14",
       "number": "2",
       "description": "",
       "imgUrl": "/upload/Moscow.jpg",
-      "start":"2020-05-01",
-      "end":"2022-01-01",
-      "tags":"Горячие туры"
+      "start": "2020-05-01",
+      "end": "2022-01-01",
+      "tags": "Горячие туры"
     },
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "Италия",
       "town": "Венеция",
-      "type":"Экскурсионные туры",
+      "type": "Экскурсионные туры",
       "price": "130000",
       "duration": "7",
       "number": "2",
       "description": "",
       "imgUrl": "/upload/Venice.jpg",
-      "start":"2020-04-01",
-      "end":"2022-01-01",
-      "tags":"Все включено"
+      "start": "2020-04-01",
+      "end": "2022-01-01",
+      "tags": "Все включено"
     },
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "Куба",
       "town": "Гаванна",
-      "type":"Пляжный отдых",
+      "type": "Пляжный отдых",
       "price": "110000",
       "duration": "7",
       "number": "2",
       "description": "",
       "imgUrl": "/upload/Cuba.jpg",
-      "start":"2020-04-01",
-      "end":"2024-01-01",
-      "tags":"Все включено"
+      "start": "2020-04-01",
+      "end": "2024-01-01",
+      "tags": "Все включено"
     },
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "Сингапур",
       "town": "Сингапур",
-      "type":"Пляжный отдых",
+      "type": "Пляжный отдых",
       "price": "150000",
       "duration": "14",
       "number": "2",
       "description": "",
       "imgUrl": "/upload/Singapur.jpg",
-      "start":"2020-04-01",
-      "end":"2024-01-01",
-      "tags":"Горячие туры"
+      "start": "2020-04-01",
+      "end": "2024-01-01",
+      "tags": "Горячие туры"
     },
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "США",
       "town": "Гаваи",
-      "type":"Пляжный отдых",
+      "type": "Пляжный отдых",
       "price": "250000",
       "duration": "14",
       "number": "2",
       "description": "",
       "imgUrl": "/upload/Gavai.jpg",
-      "start":"2020-04-01",
-      "end":"2024-01-01",
-      "tags":"Семейный отдых"
+      "start": "2020-04-01",
+      "end": "2024-01-01",
+      "tags": "Семейный отдых"
     },
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "Французская Полинезия ",
       "town": "Бора-Бора",
-      "type":"Пляжный отдых",
+      "type": "Пляжный отдых",
       "price": "320000",
       "duration": "14",
       "number": "2",
       "description": "",
       "imgUrl": "/upload/Bora-bora.jpg",
-      "start":"2020-04-01",
-      "end":"2024-01-01",
-      "tags":"Семейный отдых"
+      "start": "2020-04-01",
+      "end": "2024-01-01",
+      "tags": "Семейный отдых"
     },
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "Австралия",
       "town": "Аделайда",
-      "type":"Круиз",
+      "type": "Круиз",
       "price": "260000",
       "duration": "15",
       "number": "2",
       "description": "",
       "imgUrl": "/upload/princess_in_venice.jpg",
-      "start":"2020-04-01",
-      "end":"2024-01-01",
-      "tags":""
+      "start": "2020-04-01",
+      "end": "2024-01-01",
+      "tags": ""
     },
-    { 
-      "activity":true,
+    {
+      "activity": true,
       "country": "Таиланд",
       "town": "Паттайя",
-      "type":"Новогодний тур",
+      "type": "Новогодний тур",
       "price": "77000",
       "duration": "4",
       "number": "2",
       "description": "",
       "imgUrl": "/upload/Patay.jpg",
-      "start":"2020-04-01",
-      "end":"2024-01-01",
-      "tags":"Все включено"
+      "start": "2020-04-01",
+      "end": "2024-01-01",
+      "tags": "Все включено"
     }
   ],
-  "indexSlider":[
+  "indexSlider": [
     {
-      "link":"5f6cf8abee9c3604202295ab",
-      "imgUrl":"/upload/slide_1.jpg",
-      "title":"7 ночей в Венеции на двоих",
-      "description":"130 000 рублей",
-      "type":"tours"
+      "link": "5f6cf8abee9c3604202295ab",
+      "imgUrl": "/upload/slide_1.jpg",
+      "title": "7 ночей в Венеции на двоих",
+      "description": "130 000 рублей",
+      "type": "tours"
     },
     {
-      "link":"5f6cf8abee9c3604202295aa",
-      "imgUrl":"/upload/slide_3.jpg",
-      "title":"14 ночей в Москве на двоих",
-      "description":"30 000 рублей",
-      "type":"tours"
+      "link": "5f6cf8abee9c3604202295aa",
+      "imgUrl": "/upload/slide_3.jpg",
+      "title": "14 ночей в Москве на двоих",
+      "description": "30 000 рублей",
+      "type": "tours"
     },
     {
-      "link":"5f6cf8abee9c3604202295a9",
-      "imgUrl":"/upload/slide_2.jpg",
-      "title":"7 ночей в Нью-Йорке на двоих",
-      "description":"140 000 рублей",
-      "type":"tours"
+      "link": "5f6cf8abee9c3604202295a9",
+      "imgUrl": "/upload/slide_2.jpg",
+      "title": "7 ночей в Нью-Йорке на двоих",
+      "description": "140 000 рублей",
+      "type": "tours"
     }
   ],
-  "sliderRow":[
+  "sliderRow": [
     {
-      "link":"5f7cd8b13b43850cc0efac95",
-      "imgUrl":"/upload/slideRow_Gavana.jpg",
-      "title":"Гавана, Куба",
-      "description":"Остров Свободы, который неизменно ассоциируется с команданте Че Гевара, ромом и сигарами",
-      "duration":"на двоих, 7 ночей",
-      "prise":"от 110 000 рублей"
+      "link": "5f7cd8b13b43850cc0efac95",
+      "imgUrl": "/upload/slideRow_Gavana.jpg",
+      "title": "Гавана, Куба",
+      "description": "Остров Свободы, который неизменно ассоциируется с команданте Че Гевара, ромом и сигарами",
+      "duration": "на двоих, 7 ночей",
+      "prise": "от 110 000 рублей"
     },
     {
-      "link":"5f7cd8b13b43850cc0efac96",
-      "imgUrl":"/upload/slideRow_Singapur.jpg",
-      "title":"Сингапур",
-      "description":"Сингапур находится в близи экватора, что обеспечивает круглогодичный пляжный отдых",
-      "duration":"на двоих, 14 ночей",
-      "prise":"от 150 000 рублей"
+      "link": "5f7cd8b13b43850cc0efac96",
+      "imgUrl": "/upload/slideRow_Singapur.jpg",
+      "title": "Сингапур",
+      "description": "Сингапур находится в близи экватора, что обеспечивает круглогодичный пляжный отдых",
+      "duration": "на двоих, 14 ночей",
+      "prise": "от 150 000 рублей"
     },
     {
-      "link":"5f7cd8b13b43850cc0efac97",
-      "imgUrl":"/upload/slideRow_Gavai.jpg",
-      "title":"Гавайи, США",
-      "description":"Наградой тем, кто сюда доберется, становятся фантастические рассветы на разноцветных пляжах",
-      "duration":"на двоих, 14 ночей",
-      "prise":"от 250 000 рублей"
+      "link": "5f7cd8b13b43850cc0efac97",
+      "imgUrl": "/upload/slideRow_Gavai.jpg",
+      "title": "Гавайи, США",
+      "description": "Наградой тем, кто сюда доберется, становятся фантастические рассветы на разноцветных пляжах",
+      "duration": "на двоих, 14 ночей",
+      "prise": "от 250 000 рублей"
     },
     {
-      "link":"5f7cd8b13b43850cc0efac98",
-      "imgUrl":"/upload/slideRow_Bora-bora.jpg",
-      "title":"Бора-Бора, Французская Полинезия",
-      "description":"Это идеальное место для отдыха. Теплая и чистая вода, лазурный берег, теплый и мягкий песок",
-      "duration":"на двоих, 14 ночей",
-      "prise":"от 320 000 рублей"
+      "link": "5f7cd8b13b43850cc0efac98",
+      "imgUrl": "/upload/slideRow_Bora-bora.jpg",
+      "title": "Бора-Бора, Французская Полинезия",
+      "description": "Это идеальное место для отдыха. Теплая и чистая вода, лазурный берег, теплый и мягкий песок",
+      "duration": "на двоих, 14 ночей",
+      "prise": "от 320 000 рублей"
     }
-    
   ],
 
-  "type":[
+  "type": [
     {
-      "type":"Автобусные туры",
-      "img":"iconBus.svg"
+      "type": "Автобусные туры",
+      "img": "iconBus.svg"
     },
     {
-      "type":"Горнолыжные туры",
-      "img":"iconMountains.svg"
+      "type": "Горнолыжные туры",
+      "img": "iconMountains.svg"
     },
     {
-      "type":"Пляжный отдых",
-      "img":"iconBeach.svg"
+      "type": "Пляжный отдых",
+      "img": "iconBeach.svg"
     },
     {
-      "type":"Экскурсионные туры",
-      "img":"iconExcursion.svg"
+      "type": "Экскурсионные туры",
+      "img": "iconExcursion.svg"
     },
     {
-      "type":"Круизы",
-      "img":"iconCruises.svg"
+      "type": "Круизы",
+      "img": "iconCruises.svg"
     },
     {
-      "type":"Новогодние туры",
-      "img":"iconChristmas.svg"
+      "type": "Новогодние туры",
+      "img": "iconChristmas.svg"
     },
     {
-      "type":"Тематические туры",
-      "img":"iconChristmas.svg"
+      "type": "Тематические туры",
+      "img": "iconChristmas.svg"
     }
   ],
-  "country":[
+  "country": [
     {
-      "country":"Крит"
+      "country": "Крит"
     },
     {
-      "country":"Франция"
+      "country": "Франция"
     },
     {
-      "country":"Чехия"
+      "country": "Чехия"
     },
     {
-      "country":"Япония"
+      "country": "Япония"
     },
     {
-      "country":"Россия"
+      "country": "Россия"
     },
     {
-      "country":"Италия"
+      "country": "Италия"
     },
     {
-      "country":"США"
+      "country": "США"
     },
     {
-      "country":"Тайланд"
+      "country": "Тайланд"
     },
     {
-      "country":"Французская Полинезия"
+      "country": "Французская Полинезия"
     },
     {
-      "country":"Сингапур"
+      "country": "Сингапур"
     },
     {
-      "country":"Австралия"
+      "country": "Австралия"
     },
     {
-      "country":"Куба"
+      "country": "Куба"
     }
   ],
-  "users":[
+  "users": [
     {
-      "login":"max@max.ru",
-      "password":"admin111",
-      "access":"admin",
-      "hash":""
+      "login": "max@max.ru",
+      "password": "admin111",
+      "access": "admin",
+      "hash": ""
+    }
+  ],
+  "reviews": [
+    {
+      "firstName": "Maria",
+      "lastName": "Фестиваль",
+      "data": "04.11.2020",
+      "text": "Живописный французский прованс озаряется тяжелыми риффами ежегодно, но только на 3 дня. И эти 72 часа безраздельно отданы одному из лучших фестивалей тяжелой музыки в Европе - Hellfest! Чтобы не пропустить подобное явление природы и основное место скопление особей европейских металистов - отслеживай новости о появлении билетов у VizitTravel заранее. Традиционно все билеты разлетаются в считанные часы (если не минуты) даже ДО объявления лайн-ап - вот насколько высок кредит доверия и интереса к этому фесту у мировой публики! Несколько сцен, красочное вечернее освещение, колесо обозрения, ежедневные фаер-шоу, вкуснейший фуд-корт - это все приятные и атмосферные дополнения к ежегодному потрясающему лайн-апу!",
+      "imgPreview": ""
     }
   ]
-
 }

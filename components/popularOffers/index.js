@@ -22,7 +22,7 @@ export default function PopularOffers({ titleSection, tabs }) {
   useEffect(() => {
     let controller = new AbortController();
     async function getTours(){
-      const response = await fetch(`${process.env.PATH}api/tours`, {signal: controller.signal});
+      const response = await fetch(`api/tours`, {signal: controller.signal});
       return response.json()
     }
 
@@ -49,17 +49,7 @@ export default function PopularOffers({ titleSection, tabs }) {
 
     })
     setArrayTours(arrFiltred)
-  }, [numberTours])
-
-
-  useEffect(() => {
-    // если выбран фильтр, фильтрую общий массив туров   
-    if (selectFilter) {
-      const filtredArrayTours = allTours.filter(item => item.type == selectFilter);
-      setArrayTours(filtredArrayTours)
-      // filtration(allTours, selectFilter)
-    };
-  }, [selectFilter])
+  }, [numberTours, selectFilter])
 
 
   async function getListTours(arr, numberTours) {
@@ -71,12 +61,6 @@ export default function PopularOffers({ titleSection, tabs }) {
     setNumberTours(numberTours + 8)
   }
 
-
-
-  // function filtration(arr, filterString){
-  //   const rezult= arr.filter(item=>item.type==filterString);
-  //   setArrayTours(rezult)
-  // }
 
   return (
     <section className="popularOffers">
